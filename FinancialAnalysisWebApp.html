@@ -34,22 +34,28 @@ One of 6 columns: SAG
 	  
 <div>Revenue input: 
 <input type="text" id="myRevenueInput" oninput="myFunction1()">    
-<!--input type="text" id="SAP.Revenue"--> 
 </div> 
     
-Revenue SAP localstored:
-<div id = 'RevenueOutput'> 
+Revenue SAG localstored:
+<div id = "RevenueOutput"> 
 </div> 
-<p id="locallystoredy">Here locallystoredy: </p>   
+<div id="locallystoredy">Here locallystored Y	: </div>   
 
-Profit SAP    
+Profit SAG    
 <div> 
-<input type="text" id="Profit" value="200"> 
+<input type="text" id="myProfitInput" oninput="myFunction2()"> 
 </div>
+<div id="locallystoredz">  </div> 
 
-Profitmargin calculated FRANK:
+Profitmargin calculated:
 <div id="profitmargin"> 
 </div>	
+
+<br> 
+<input type="text" id="myInput" oninput="myFunction()">
+<p id="demo"></p>    
+<p id="locallystoredx"></p>   
+
 	  
 </div>
 	
@@ -87,8 +93,8 @@ One of 12 columns
 
 
 
-<button id="myButton">Store Column 1 values</button>
-<div id = "firstDiv">This is some text</div> 
+<!--button id="myButton">Store Column 1 values</button-->
+<!--div id = "firstDiv">This is some text</div--> 
 
 
 </div><!--ends container--> 
@@ -96,25 +102,30 @@ One of 12 columns
 
 <!-- HTML events --> 
     
-<input type="text" id="myInput" oninput="myFunction()">
+<!--input type="text" id="myInput" oninput="myFunction()">
 <p id="demo"></p>    
-<p id="locallystoredx">Here locallystoredx: </p>      
+<p id="locallystoredx">Here locallystoredx: </p-->      
 
     
 <script  type="text/javascript"> 
     
+<!-- THESE 2 LINES ENSURE LOCALLY STORED VALUES ARE ALWAYS DISPLAYED, NOT LAST LINE IN FUNCTION --> 	
 document.getElementById("locallystoredx").innerHTML = "locally stored x: " + localStorage.getItem('x');    
 
-document.getElementById("myButton").onclick=function() {
+document.getElementById("locallystoredy").innerHTML = "locally stored x: " + localStorage.getItem('y');   
+
+document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); 
+
+//document.getElementById("myButton").onclick=function() {
 
 //document.getElementById("output").innerHTML = "hi";
   
-localStorage.saprevenue = document.getElementById('SAP.Revenue').value;    
+// localStorage.saprevenue = document.getElementById('SAP.Revenue').value;    
     
-document.getElementById("output").innerHTML = document.getElementById('SAP.Revenue').value;    
+// document.getElementById("output").innerHTML = document.getElementById('SAP.Revenue').value;    
 //document.getElementById("firstDiv").innerHTML = profitmargin; 
 
- }
+// }
 
 
 //HTML EVENTS
@@ -123,38 +134,46 @@ function myFunction() {
     var x = document.getElementById("myInput").value;
     document.getElementById("demo").innerHTML = "You wrote: " + x;
     localStorage.x = x; 
-    document.getElementById("locallystoredx").innerHTML = "locally stored x: " + localStorage.getItem('x');
+    document.getElementById("locallystoredx").innerHTML = "locally stored x: " + localStorage.getItem('x'); // WHY NOT ? 
 }
  
 
 function myFunction1() { 
     var y = document.getElementById("myRevenueInput").value;
-    document.getElementById("RevenueOutput").innerHTML = "You wrote: " + y;
+    document.getElementById("RevenueOutput").innerHTML = "You entered: " + y;
     localStorage.y = y; 
-    document.getElementById("locallystoredy").innerHTML = "locally stored y: " + localStorage.getItem('y');
+    document.getElementById("locallystoredy").innerHTML = "locally stored y: " + localStorage.getItem('y'); // WHY NOT ? 
+	 
 }    
     
-    
+function myFunction2() { 
+    var z = document.getElementById("myProfitInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.z = z; 
+    document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
     
 
-localStorage.saprevenue = document.getElementById('SAP.Revenue').value;
+//localStorage.saprevenue = document.getElementById('SAP.Revenue').value;
 
 //var saprevenue = document.getElementById('SAP.Revenue').value; 
 //localStorage.setItem('SAP.Revenue', saprevenue);  
-var revenue = localStorage.setItem('SAP.Revenue', document.getElementById('SAP.Revenue').value); 
+//var revenue = localStorage.setItem('SAP.Revenue', document.getElementById('SAP.Revenue').value); 
     
 //window.localstorage = saprevenue; 
 
-localStorage.setItem('SAP.Revenue', JSON.stringify(saprevenue));
+//localStorage.setItem('SAP.Revenue', JSON.stringify(saprevenue));
  
 // Retrieve the object from storage
-var sapstoredrevenue = JSON.parse(localStorage.getItem('SAP.Revenue'));
+//var sapstoredrevenue = JSON.parse(localStorage.getItem('SAP.Revenue'));
    
     
 //console.log(sapstoredrevenue + " " ); // + retrievedObject.lastName);
 
 
-var revenuestored = localStorage.setItem('revenuestored', saprevenue);
+//var revenuestored = localStorage.setItem('revenuestored', saprevenue);
 // SHOULD WORK - WHY DOESN'T IT 
 //if (document.getElementById('Revenue').value) { 
 //var revenue = localStorage.setItem('revenue', document.getElementById('Revenue').value); 
@@ -169,14 +188,16 @@ var revenuestored = localStorage.setItem('revenuestored', saprevenue);
 
 ///var revenuestored = localStorage.getItem('revenue');
 //alert(revenue); 
-document.getElementById("output").innerHTML = sapstoredrevenue;
-document.getElementById("output1").innerHTML = sapstoredrevenue; // Lesson learnt: Can't have more than 1 element with same id, won't show up
+
+//document.getElementById("output").innerHTML = sapstoredrevenue;
+//document.getElementById("output1").innerHTML = sapstoredrevenue; // Lesson learnt: Can't have more than 1 element with same id, won't show up
+
 //alert(revenue);  
 
-var profit = document.getElementById('Profit').value;
+var profit = document.getElementById('myProfitInput').value;
 
 
-var profitmargin = (profit/sapstoredrevenue).toFixed(3); 
+var profitmargin = (localStorage.getItem('z')/localStorage.getItem('y')).toFixed(3); 
 document.getElementById("profitmargin").innerHTML = profitmargin; 
 
 </script> 
