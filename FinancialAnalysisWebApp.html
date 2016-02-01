@@ -16,13 +16,24 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>    
  
+<!-- https://www.sitepoint.com/community/t/write-a-variable-to-a-form-input-value/1196 -->  
+<script language="javascript" type="text/javascript">
+<!--
+function initInput()
+	{
+	//var variable = 12345;
+	document.forms[0].myRevenueInput.value = localStorage.getItem('y');
+	}
+//-->
+</script> 
+ 
  
 </head> 
 
 <!-- NEW REQUIREMENT: just enter number which gets immediately mapped to variable which gets 
 saved in localstorage. Nothing more complicated for initial version --> 
     
-<body> 
+<body onload="initInput()"> 
 
 
 <div class="container">
@@ -31,10 +42,12 @@ saved in localstorage. Nothing more complicated for initial version -->
    
 <div class="col-md-2">
 One of 6 columns: SAG
-	  
+
+<form>	  
 <div>Revenue input: 
-<input type="text" id="myRevenueInput" oninput="myFunction1()">    
+<input type="text" id="myRevenueInput" oninput="myFunction1()" value="">    
 </div> 
+</form> 
     
 Revenue SAG localstored:
 <div id = "RevenueOutput"> 
