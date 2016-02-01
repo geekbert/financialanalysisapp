@@ -1,0 +1,194 @@
+<html> 
+<head> 
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
+    
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>    
+ 
+ 
+</head> 
+
+<!-- NEW REQUIREMENT: just enter number which gets immediately mapped to variable which gets 
+saved in localstorage. Nothing more complicated for initial version --> 
+    
+<body> 
+
+
+<div class="container">
+
+<div class="row">
+   
+<div class="col-md-2">
+One of 6 columns: SAG
+	  
+<div>Revenue input: 
+<input type="text" id="myRevenueInput" oninput="myFunction1()">    
+<!--input type="text" id="SAP.Revenue"--> 
+</div> 
+    
+Revenue SAP localstored:
+<div id = 'RevenueOutput'> 
+</div> 
+<p id="locallystoredy">Here locallystoredy: </p>   
+
+Profit SAP    
+<div> 
+<input type="text" id="Profit" value="200"> 
+</div>
+
+Profitmargin calculated:
+<div id="profitmargin"> 
+</div>	
+	  
+</div>
+	
+      
+<div class="col-md-2">
+One of 6 columns: SAP
+	  
+<div>Revenue input: 
+
+<input type="text" id="Revenue"> 
+</div> 
+    
+Revenue localstored:
+<div id = 'output1'> 
+</div> 
+
+Profit:     
+<div> 
+<input type="text" id="Profit" value="200"> 
+</div>
+
+Profitmargin calculated:
+<div id="profitmargin"> 
+</div>	 
+	  
+</div>
+	
+	
+<div class="col-md-1">
+One of 12 columns
+</div>
+</div>
+<hr> <!--SMART: Show horizontal rule where div class row ends--> 
+
+
+
+
+<button id="myButton">Store Column 1 values</button>
+<div id = "firstDiv">This is some text</div> 
+
+
+</div><!--ends container--> 
+
+
+<!-- HTML events --> 
+    
+<input type="text" id="myInput" oninput="myFunction()">
+<p id="demo"></p>    
+<p id="locallystoredx">Here locallystoredx: </p>      
+
+    
+<script  type="text/javascript"> 
+    
+document.getElementById("locallystoredx").innerHTML = "locally stored x: " + localStorage.getItem('x');    
+
+document.getElementById("myButton").onclick=function() {
+
+//document.getElementById("output").innerHTML = "hi";
+  
+localStorage.saprevenue = document.getElementById('SAP.Revenue').value;    
+    
+document.getElementById("output").innerHTML = document.getElementById('SAP.Revenue').value;    
+//document.getElementById("firstDiv").innerHTML = profitmargin; 
+
+ }
+
+
+//HTML EVENTS
+// WUNDERBAR: This is the logic, combined with HTML input event (no button) 
+function myFunction() { 
+    var x = document.getElementById("myInput").value;
+    document.getElementById("demo").innerHTML = "You wrote: " + x;
+    localStorage.x = x; 
+    document.getElementById("locallystoredx").innerHTML = "locally stored x: " + localStorage.getItem('x');
+}
+ 
+
+function myFunction1() { 
+    var y = document.getElementById("myRevenueInput").value;
+    document.getElementById("RevenueOutput").innerHTML = "You wrote: " + y;
+    localStorage.y = y; 
+    document.getElementById("locallystoredy").innerHTML = "locally stored y: " + localStorage.getItem('y');
+}    
+    
+    
+    
+
+localStorage.saprevenue = document.getElementById('SAP.Revenue').value;
+
+//var saprevenue = document.getElementById('SAP.Revenue').value; 
+//localStorage.setItem('SAP.Revenue', saprevenue);  
+var revenue = localStorage.setItem('SAP.Revenue', document.getElementById('SAP.Revenue').value); 
+    
+//window.localstorage = saprevenue; 
+
+localStorage.setItem('SAP.Revenue', JSON.stringify(saprevenue));
+ 
+// Retrieve the object from storage
+var sapstoredrevenue = JSON.parse(localStorage.getItem('SAP.Revenue'));
+   
+    
+//console.log(sapstoredrevenue + " " ); // + retrievedObject.lastName);
+
+
+var revenuestored = localStorage.setItem('revenuestored', saprevenue);
+// SHOULD WORK - WHY DOESN'T IT 
+//if (document.getElementById('Revenue').value) { 
+//var revenue = localStorage.setItem('revenue', document.getElementById('Revenue').value); 
+//alert(revenue); 
+//var revenue = sessionStorage.setItem('revenue', document.getElementById('Revenue').value);
+//} 
+//else { 
+//var revenuestored = window.localStorage.getItem('revenue');
+//var revenuestored = sessionStorage.getItem('revenue');
+//} 
+//alert(revenuestored); 
+
+///var revenuestored = localStorage.getItem('revenue');
+//alert(revenue); 
+document.getElementById("output").innerHTML = sapstoredrevenue;
+document.getElementById("output1").innerHTML = sapstoredrevenue; // Lesson learnt: Can't have more than 1 element with same id, won't show up
+//alert(revenue);  
+
+var profit = document.getElementById('Profit').value;
+
+
+var profitmargin = (profit/sapstoredrevenue).toFixed(3); 
+document.getElementById("profitmargin").innerHTML = profitmargin; 
+
+</script> 
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+   
+</body> 
+
+
+</html> 	
