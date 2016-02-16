@@ -4,6 +4,22 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  
+<style> 
+	
+ td { 
+ }
+ 
+input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
+
+hr {
+    padding: 0px;
+    margin: 0px;    
+   }
+
+	
+
+</style> 
+ 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
     
@@ -23,9 +39,16 @@ function initInput()
 	{
 	//var variable = 12345;
 	document.forms[0].SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
-	document.forms[1].SAGProfitInput.value = localStorage.getItem('SAGProfit');
-	document.forms[2].SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
+	document.forms[1].SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
+	document.forms[2].SAGProfitInput.value = localStorage.getItem('SAGProfit');
 	document.forms[3].SAPEBITInput.value = localStorage.getItem('SAPEBIT');
+	
+	document.forms[4].SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');
+	document.forms[5].SAPEmployeesInput.value = localStorage.getItem('SAPEmployees');
+	
+	document.forms[6].SAGPPEInput.value = localStorage.getItem('SAGPPE');
+	document.forms[7].SAPPPEInput.value = localStorage.getItem('SAPPPE');
+	
 	}
 
 /***	
@@ -55,81 +78,295 @@ saved in localstorage. Nothing more complicated for initial version -->
 
 <div class="container">
 
-<div class="row">
-   
-<div class="col-md-2">
-One of 6 columns: SAG
+	 <div class="row"><!--ROW 0--> 
+			
+		 <div class="col-md-2"><h4>2015</h4></div> 
+		 <div class="col-md-1"><h4>SAG</h4></div>
+	     <div class="col-md-1"><h4>SAP</h4></div>
+		 <div class="col-md-1"><h4>IBM</h4></div>
+		 <div class="col-md-1"><h4>GOOGLE</h4></div>
+		 <div class="col-md-1"><h4>NUM 5</h4></div>
+		 <div class="col-md-1"><h4>NUM 6</h4></div>	
+		 <div class="col-md-1"><h4>NUM 7</h4></div>
+		 <div class="col-md-1"><h4>NUM 8</h4></div>		
+		 <div class="col-md-1"><h4>NUM 9</h4></div>
+		 <div class="col-md-1"><h4>NUM 10</h4></div>	
+	
+	</div>	
 
-<form>	  
-<div>Revenue input: 
-<input type="text" id="SAGRevenueInput" oninput="myFunction1()" value="">    
-</div> 
-</form> 
+   <div class="row"><!--ROW 1--> 
+	
+		<div class="col-md-2">Revenue (mio.)</div> 
+		<div class="col-md-1">      
+		 <form>	  
+			<!--label for="SAGRevenueInput">Rev</label--> 
+			<div> 
+			<input type="text" id="SAGRevenueInput" oninput="myFunction1()" value="">    
+			</div> 
+		</form> 
+        </div>
 		
-<!--div id = "RevenueOutput"> 
-</div> 
-<div id="locallystoredy">Here locallystored SAG Revenue	: </div-->   	
+        <div class="col-md-1">
+			
+			<form>	  
+			<div> 	
+			<input type="text" id="SAPRevenueInput" oninput="myFunction3()" value="">    
+			</div> 
+			</form>
+          
+       </div>
+	   
+        <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		 <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+	  
+      </div>	
+		
+	  
+	  
+	   <div class="row"><!--ROW 2--> 
+	   
+	    <div class="col-md-2">
+         EBIT (mio): 
+			
+        </div> 
+	 
+        <div class="col-md-1">	
+         
+		 <form>	  
+			 
+			<div>
+			<input type="text" id="SAGProfitInput" oninput="myFunction2()" value="">    
+			</div> 
+		</form> 
+        </div>
+		
+        <div class="col-md-1">
+         
+			<form> 
+			<div> 
+			<input type="text" id="SAPEBITInput" oninput="myFunction4()" value="">    
+			</div>
+			</form> 
+          
+       </div>
+	   
+        <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		 <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+         
+			
+        </div>
+		
 
-SAG EBIT    
+      <hr>
+	  
+	  
+	  
+
+ <div class="row"><!--ROW 3--> 
+	 
+		
+		<div class="col-md-2">
+        Operating Margin: 	
+        </div> 
+		
+        <i><div class="col-md-1" id="SAGProfitMargin"></div></i>		 
+		<i><div class="col-md-1" id="SAPprofitmargin"></div></i>			 
+		
+	    <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		 <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+        
+		
+	  
+      </div>	
+
+      <hr>
+
+
+<div class="row"><!--ROW 4--> 
+   
+<div class="col-md-2">SAG Employees</div> 
+<div class="col-md-1">
 <form> 
-<div> 
-<input type="text" id="SAGProfitInput" oninput="myFunction2()"> 
-</div>
+<input type="text" id="SAGEmployeesInput" oninput="myFunctionSAGEmployees()"> 
 </form> 
-<!--div id="locallystoredz">  </div--> 
+</div> 
+<div class="col-md-1">
+<form> 
+<input type="text" id="SAPEmployeesInput" oninput="myFunctionSAPEmployees()"> 
+</form> 
+</div> 
 
-SAG EBIT margin calculated:
-<div id="SAGProfitMargin"> 
-</div>	
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		 <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+
+
+</div><!-- END ROW--> 
+
+
+
+<div class="row"><!--ROW 5--> 
+
+
+<div class="col-md-2">EBIT/Employee</div> 
+<i><div class="col-md-1" id="SAGEmployeeEBIT"></div></i> 	
+<i><div class="col-md-1" id="SAPEmployeeEBIT"></div></i>
+
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i> <div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+
+
+</div><!-- END ROW--> 
+
+
+<div class="row"><!--ROW 6--> 
+
+<div class="col-md-2">Revenue/Employee</div> 
+<i><div class="col-md-1" id="SAGEmployeeRevenue"></div></i>	
+<i><div class="col-md-1" id="SAPEmployeeRevenue"></div></i>
+	
+
+		 
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i> <div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>	
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+
+
+</div><!-- END ROW--> 
+
+<hr>
+
+<div class="row"><!--ROW 7--> 
+
+<div class="col-md-2">PPE</div> 
+<div class="col-md-1">
+<form> 
+<input type="text" id="SAGPPEInput" oninput="myFunctionSAGPPE()"> 
+</form> 
+</div>
+<div class="col-md-1">
+<form> 
+<input type="text" id="SAPPPEInput" oninput="myFunctionSAPPPE()"> 
+</form> 
+</div>
+
+		 
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		 <div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+
+
+	  
+</div><!-- END ROW--> 
+
+
+<div class="row"><!--ROW 8--> 
+
+<div class="col-md-2">PPE/Employee</div> 
+<i><div class="col-md-1" id="SAGEmployeePPE"></div></i>	
+<i><div class="col-md-1" id="SAPEmployeePPE"></div></i> 
+	
+		 
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+		<i><div class="col-md-1"></div></i>
+
+
+</div><!-- END ROW--> 
+
+
+
+
 
 <br> 
-
-
-	  
-</div>
-	
-      
-<div class="col-md-2">
-One of 6 columns: SAP
-	  
-
-<form>	  
-<div>Revenue input: 
-<input type="text" id="SAPRevenueInput" oninput="myFunction3()" value="">    
-</div> 
-</form>
-   
-<!--div id = "SAPRevenueOutput"> 
-</div> 
-<div id="locallystoredSAPRev">Here locallystored SAP Rev	: </div-->   
-
-SAP EBIT:     
-<form> 
-<div> 
-<input type="text" id="SAPEBITInput" oninput="myFunction4()" value="">    
-</div>
-</form> 
-<!--div id="locallystoredSAPEBIT">  </div--> 
-
-SAP EBIT margin calculated:
-<div id="SAPprofitmargin"> 
-</div>	 
-	  
-</div>
-	
-
-	
-<div class="col-md-1">
-One of 12 columns
-</div>
-</div>
-<hr> <!--SMART: Show horizontal rule where div class ROW ends--> 
-
-
 <div class="row">
-COOL ROW 
-</div> 
-<hr> <!--SMART: Show horizontal rule where div class ROW ends--> 
+ <div class="table-responsive"><!-- makes it horizontally scrollable, if class form control removed--> 	
+      <table class="table table-condensed"> 
+	  
+      <tr class="row">		
+        <!--td class="field-label col-md-2 active">
+          <label>Field 1:</label>
+        </td-->
+		 
+        <td class="col-md-2">
+        <input type ="text" class="form-control">
+        </td>
+		 
+		
+		<td class="col-md-2">
+        <input type ="text" class="form-control">
+        </td>
+		  <td class="col-md-2">
+        <input type ="text" class="form-control"</input>
+        </td>
+		  <td class="col-md-2">
+        <input type ="text" class="form-control"</input>
+        </td>
+		 <td class="col-md-2">
+        <input type ="text" class="form-control"</input>
+        </td>
+		 <td class="col-md-2">
+        <input type ="text" class="form-control"</input>
+        </td>
+      </tr>
+	 
+	  
+      
+    </table>
+    </div>
+</div> 	  
+	  
+
+
+
+
+
+
+
 
 </div><!--ends container--> 
 
@@ -139,29 +376,6 @@ COOL ROW
     
 <script  type="text/javascript"> 
     
-<!-- THESE 2 LINES ENSURE LOCALLY STORED VALUES ARE ALWAYS DISPLAYED, NOT LAST LINE IN FUNCTION --> 	
-//document.getElementById("locallystoredx").innerHTML = "locally stored x: " + localStorage.getItem('x');    
-
-//document.getElementById("locallystoredy").innerHTML = "locally stored SAG Revenue Frank: " + localStorage.getItem('y');   
-
-//document.getElementById("locallystoredz").innerHTML = "locally store	d SAG EBIT: " + localStorage.getItem('z'); 
-
-//document.getElementById("locallystoredSAPRev").innerHTML = "locally stored SAP Revenue: " + localStorage.getItem('SAPRevenue'); 
-
-//document.getElementById("locallystoredSAPEBIT").innerHTML = "locally stored SAP EBIT: " + localStorage.getItem('SAPEBIT'); 
-
-//document.getElementById("myButton").onclick=function() {
-
-//document.getElementById("output").innerHTML = "hi";
-  
-// localStorage.saprevenue = document.getElementById('SAP.Revenue').value;    
-    
-// document.getElementById("output").innerHTML = document.getElementById('SAP.Revenue').value;    
-//document.getElementById("firstDiv").innerHTML = profitmargin; 
-
-// }
-
-
 //HTML EVENTS
 // WUNDERBAR: This is the logic, combined with HTML input event (no button) 
 //function myFunction() { 
@@ -207,11 +421,37 @@ function myFunction4() {
 }  
 
 
+function myFunctionSAGEmployees() { 
+	var SAGEmployees = document.getElementById("SAGEmployeesInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGEmployees = SAGEmployees; 
+}
+
+
+function myFunctionSAPEmployees() { 
+	var SAPEmployees = document.getElementById("SAPEmployeesInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAPEmployees = SAPEmployees; 
+}
+
+function myFunctionSAGPPE() { 
+	var SAGPPE = document.getElementById("SAGPPEInput").value;
+    localStorage.SAGPPE = SAGPPE; 
+}
+
+function myFunctionSAPPPE() { 
+	var SAPPPE = document.getElementById("SAPPPEInput").value;
+    localStorage.SAPPPE = SAPPPE; 
+}	
+
+
+
 //localStorage.setItem('SAP.Revenue', JSON.stringify(saprevenue));
  
 // Retrieve the object from storage
 //var sapstoredrevenue = JSON.parse(localStorage.getItem('SAP.Revenue'));
    
+// CALCULATED RATIOS    
 		
 var SAGprofitmargin = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGRevenue')).toFixed(3); 
 document.getElementById("SAGProfitMargin").innerHTML = SAGprofitmargin; 
@@ -219,7 +459,26 @@ document.getElementById("SAGProfitMargin").innerHTML = SAGprofitmargin;
 var SAPprofitmargin = (localStorage.getItem('SAPEBIT')/localStorage.getItem('SAPRevenue')).toFixed(3); 
 document.getElementById("SAPprofitmargin").innerHTML = SAPprofitmargin; 
 
-</script> 
+var SAGEmployeeEBIT = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeEBIT").innerHTML = SAGEmployeeEBIT;  
+
+var SAPEmployeeEBIT = (localStorage.getItem('SAPEBIT')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeeEBIT").innerHTML = SAPEmployeeEBIT;  
+
+var SAGEmployeeRevenue = (localStorage.getItem('SAGRevenue')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeRevenue").innerHTML = SAGEmployeeRevenue;  
+
+var SAPEmployeeRevenue = (localStorage.getItem('SAPRevenue')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeeRevenue").innerHTML = SAPEmployeeRevenue;  
+
+var SAGEmployeePPE = (localStorage.getItem('SAGPPE')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeePPE").innerHTML = SAGEmployeePPE;  
+
+var SAPEmployeePPE = (localStorage.getItem('SAPPPE')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeePPE").innerHTML = SAPEmployeePPE;  
+
+
+</script> 	
 
 
 
