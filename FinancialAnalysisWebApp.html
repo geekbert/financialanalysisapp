@@ -4,11 +4,33 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  
-<style> 
-	
- td { 
- }
- 
+<style type = "text/css"> 
+
+/* works */ 
+*
+{
+//	background-color: rgb(200,200,200); 
+//	opacity: 0.9 ;
+}
+   
+/* works */    
+body { 
+
+//background-image: url("blue_windows_background_197636.jpg"); 
+background-size: 1400px 1000px;	
+opacity: 0.9 ;
+background-repeat: no-repeat;
+//background-position: center center;
+
+}   
+   
+   
+/* works */ 
+div 
+{
+	border: 0.5px dotted lightblue; 	
+}
+
 input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
 
 hr {
@@ -16,8 +38,21 @@ hr {
     margin: 0px;    
    }
 
-	
+/* works */ 
+input 
+{
+	border: 0.5px solid orange; 	
+}   
 
+/* works: trick to move outside of bootstrap container */ 
+div.rowname 
+{
+	position: relative; 
+	left: -90px; 
+	top: 30px; 
+	padding: 20px; 
+}   
+   
 </style> 
  
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -36,18 +71,31 @@ hr {
 <script language="javascript" type="text/javascript">
 <!--
 function initInput()
-	{
-	//var variable = 12345;
-	document.forms[0].SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
-	document.forms[1].SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
-	document.forms[2].SAGProfitInput.value = localStorage.getItem('SAGProfit');
-	document.forms[3].SAPEBITInput.value = localStorage.getItem('SAPEBIT');
+	{	
 	
-	document.forms[4].SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');
-	document.forms[5].SAPEmployeesInput.value = localStorage.getItem('SAPEmployees');
-	
-	document.forms[6].SAGPPEInput.value = localStorage.getItem('SAGPPE');
-	document.forms[7].SAPPPEInput.value = localStorage.getItem('SAPPPE');
+	//seems to work: http://stackoverflow.com/questions/2435525/best-practice-access-form-elements-by-html-id-or-name-attribute 
+	// SAG Revenue
+	document.getElementById("SAGRevenueInputForm").SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
+	//document.forms[0].SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
+	// SAP Revenue
+	document.getElementById("SAPRevenueInputForm").SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
+	//document.forms[1].SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
+	// SAG Profit
+	document.getElementById("SAGProfitInputForm").SAGProfitInput.value = localStorage.getItem('SAGProfit');
+	//document.forms[2].SAGProfitInput.value = localStorage.getItem('SAGProfit');
+	// SAP Profit
+	document.getElementById("SAPEBITInputForm").SAPEBITInput.value = localStorage.getItem('SAPEBIT');
+	//document.forms[3].SAPEBITInput.value = localStorage.getItem('SAPEBIT');
+	// EMPLOYEES	
+	document.getElementById("SAGEmployeesInputForm").SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');
+	//document.forms[4].SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');
+	document.getElementById("SAPEmployeesInputForm").SAPEmployeesInput.value = localStorage.getItem('SAPEmployees');
+	//document.forms[5].SAPEmployeesInput.value = localStorage.getItem('SAPEmployees');
+	// PPE	
+	document.getElementById("SAGPPEInputForm").SAGPPEInput.value = localStorage.getItem('SAGPPE');
+	//document.forms[6].SAGPPEInput.value = localStorage.getItem('SAGPPE');
+	document.getElementById("SAPPPEInputForm").SAPPPEInput.value = localStorage.getItem('SAPPPE');
+	//document.forms[7].SAPPPEInput.value = localStorage.getItem('SAPPPE');
 	
 	}
 
@@ -73,10 +121,14 @@ function initInput()
 <!-- NEW REQUIREMENT: just enter number which gets immediately mapped to variable which gets 
 saved in localstorage. Nothing more complicated for initial version --> 
     
-<body onload="initInput()"> 
+<body  onload="initInput()"> 
 
 
 <div class="container">
+
+		 
+		 
+		 
 
 	 <div class="row"><!--ROW 0--> 
 			
@@ -84,21 +136,27 @@ saved in localstorage. Nothing more complicated for initial version -->
 		 <div class="col-md-1"><h4>SAG</h4></div>
 	     <div class="col-md-1"><h4>SAP</h4></div>
 		 <div class="col-md-1"><h4>IBM</h4></div>
-		 <div class="col-md-1"><h4>GOOGLE</h4></div>
-		 <div class="col-md-1"><h4>NUM 5</h4></div>
+		 
+			
+		 
+		 
+		 
+		 <div class="col-md-1"><h4>ORACLE</h4></div>
+		 <div class="col-md-1"><h4>GOOGLE</h4></div>	
 		 <div class="col-md-1"><h4>NUM 6</h4></div>	
 		 <div class="col-md-1"><h4>NUM 7</h4></div>
 		 <div class="col-md-1"><h4>NUM 8</h4></div>		
 		 <div class="col-md-1"><h4>NUM 9</h4></div>
-		 <div class="col-md-1"><h4>NUM 10</h4></div>	
+		 <!--div class="col-md-1"><h4>NUM 10</h4></div-->	
 	
 	</div>	
 
    <div class="row"><!--ROW 1--> 
 	
 		<div class="col-md-2">Revenue (mio.)</div> 
-		<div class="col-md-1">      
-		 <form>	  
+		<div class="col-md-1"> 
+     	
+		 <form id = "SAGRevenueInputForm">	  
 			<!--label for="SAGRevenueInput">Rev</label--> 
 			<div> 
 			<input type="text" id="SAGRevenueInput" oninput="myFunction1()" value="">    
@@ -108,7 +166,7 @@ saved in localstorage. Nothing more complicated for initial version -->
 		
         <div class="col-md-1">
 			
-			<form>	  
+			<form id = "SAPRevenueInputForm">	  
 			<div> 	
 			<input type="text" id="SAPRevenueInput" oninput="myFunction3()" value="">    
 			</div> 
@@ -117,6 +175,7 @@ saved in localstorage. Nothing more complicated for initial version -->
        </div>
 	   
         <div class="col-md-1"></div>
+		
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
@@ -138,7 +197,7 @@ saved in localstorage. Nothing more complicated for initial version -->
 	 
         <div class="col-md-1">	
          
-		 <form>	  
+		 <form id = "SAGProfitInputForm">	  
 			 
 			<div>
 			<input type="text" id="SAGProfitInput" oninput="myFunction2()" value="">    
@@ -148,7 +207,7 @@ saved in localstorage. Nothing more complicated for initial version -->
 		
         <div class="col-md-1">
          
-			<form> 
+			<form id = "SAPEBITInputForm"> 
 			<div> 
 			<input type="text" id="SAPEBITInput" oninput="myFunction4()" value="">    
 			</div>
@@ -204,12 +263,14 @@ saved in localstorage. Nothing more complicated for initial version -->
    
 <div class="col-md-2">SAG Employees</div> 
 <div class="col-md-1">
-<form> 
+
+<form id = "SAGEmployeesInputForm"> 
 <input type="text" id="SAGEmployeesInput" oninput="myFunctionSAGEmployees()"> 
 </form> 
 </div> 
 <div class="col-md-1">
-<form> 
+
+<form id = "SAPEmployeesInputForm"> 
 <input type="text" id="SAPEmployeesInput" oninput="myFunctionSAPEmployees()"> 
 </form> 
 </div> 
@@ -274,12 +335,13 @@ saved in localstorage. Nothing more complicated for initial version -->
 
 <div class="col-md-2">PPE</div> 
 <div class="col-md-1">
-<form> 
+<form id = "SAGPPEInputForm"> 
 <input type="text" id="SAGPPEInput" oninput="myFunctionSAGPPE()"> 
 </form> 
 </div>
 <div class="col-md-1">
-<form> 
+
+<form id = "SAPPPEInputForm"> 
 <input type="text" id="SAPPPEInput" oninput="myFunctionSAPPPE()"> 
 </form> 
 </div>
@@ -319,6 +381,39 @@ saved in localstorage. Nothing more complicated for initial version -->
 </div><!-- END ROW--> 
 
 
+
+<div class="row"><!--ROW 9 - EXPERIMENT FOR COLUMN-BASED LAYOUT: 1 ROW with 10 COLUMNS and 10 INPUT BOXES UNDERNEATH --> 
+<!-- or better: no rows at all? Or table --> 
+
+<div class="rowname"> NAME </div> 				
+<div class="rowname"> NAME 2 </div> 	
+	
+<!--div class="col-md-2">COLUMN NAME</div--> 
+
+
+
+<div class="col-md-1 col-md-offset-4">
+
+
+
+<form id = ""> 
+<input type="text" id=" " oninput=""> 
+</form> 	
+<p> 
+
+ 
+<form id = ""> 
+<input type="text" id=" " oninput=""> 
+</form> 
+ 	
+
+
+</div>
+
+ 
+
+
+</div><!-- END ROW--> 
 
 
 
@@ -363,17 +458,20 @@ saved in localstorage. Nothing more complicated for initial version -->
 
 
 
-
+ 
+<p>Requirement: Make it so you can copy and paste HTML if add new column/company. IDEA: make it column-based, and within column rows, as opposed to other way
+round. Also, have separate script section within each column </p>       
+<p>Requirement: Implement HTML Canvas for Charts       </p>      
+IDEA: Use Firebase cloud DB to make data persistent</br> 	    
+<p>IDEA: can use this template for SWOT, Business Model Canvas, To-Do, etc..</p>       
+    
 
 
 
 
 </div><!--ends container--> 
 
- 
-      
 
-    
 <script  type="text/javascript"> 
     
 //HTML EVENTS
