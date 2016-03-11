@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Three Column Layout</title>
+		<style type="text/css">
+			body {
+				width: 1100px;
+				font-family: Arial, Verdana, sans-serif;
+				color: #665544;}
+			.column2of9, .column3of9, .column4of9, .column5of9, .column6of9, .column7of9, .column8of9, .column9of9 {
+				width: 100px;
+				float: left;
+				margin: 10px;}
+			
+			.column1of9 {
+				width: 120px;
+				float: left;
+				margin: 10px;}	
+			p { 
+			font-size: 14px; 
+			}	
+			
+			
+				
+			div 
+				{
+					border: 1px dotted lightblue; 	
+				}	
+			input {width: 97px; }	
+			
+			.calculated { 
+				border: 2px dotted orange; 
+			}
+			
+				
+		</style>	
+		
+	
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->    
+    
+<!-- Latest compiled and minified CSS -->
+<!-- THIS HELPS LAYOUT OF PAGE --> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"-->
+
+<!-- Latest compiled and minified JavaScript -->
+<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script-->    
+ 
+<!-- https://www.sitepoint.com/community/t/write-a-variable-to-a-form-input-value/1196 -->  
+
+<script language="javascript" type="text/javascript">
+
+function initInput()
+
+	{	
+	
+	//seems to work: http://stackoverflow.com/questions/2435525/best-practice-access-form-elements-by-html-id-or-name-attribute 
+	// SAG  
+	document.getElementById("SAGRevenueInputForm").SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
+	document.getElementById("SAGProfitInputForm").SAGProfitInput.value = localStorage.getItem('SAGProfit'); 
+	document.getElementById("SAGEmployeesInputForm").SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');	
+	document.getElementById("SAGPPEInputForm").SAGPPEInput.value = localStorage.getItem('SAGPPE');
+	
+	// SAP
+	document.getElementById("SAPRevenueInputForm").SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
+	document.getElementById("SAPEBITInputForm").SAPEBITInput.value = localStorage.getItem('SAPEBIT'); 
+	//document.getElementById("SAPEmployeesInputForm").SAPEmployeesInput.value = localStorage.getItem('SAPEmployees'); 
+	//document.getElementById("SAPPPEInputForm").SAPPPEInput.value = localStorage.getItem('SAPPPE');
+	 
+	// IBM  
+	document.getElementById("IBMRevenueInputForm").IBMRevenueInput.value = localStorage.getItem('IBMRevenue');
+	document.getElementById("IBMProfitInputForm").IBMProfitInput.value = localStorage.getItem('IBMProfit'); 
+	document.getElementById("IBMEmployeesInputForm").IBMEmployeesInput.value = localStorage.getItem('IBMEmployees');	
+	document.getElementById("IBMPPEInputForm").IBMPPEInput.value = localStorage.getItem('IBMPPE');
+	
+	
+	}
+		
+		
+</script> 		
+		
+		
+		
+		
+		
+</head>
+
+<body onload="initInput()">
+
+		<h1>FINANCIAL ANALYSIS APP</h1>
+		
+		<div class="column1of9">
+			<h3>2015</h3>
+			<p>Revenue (mio.)</p>
+			<p>EBIT (mio):</p>
+			<p>Operating Margin</p> 
+			<p>SAG Employees</p> 
+			<p>EBIT/Employee</p>
+			<p>Revenue/Employee</p>
+			<p>PPE</p>
+			<p>PPE/Employee</p> 
+
+		 
+			 
+		</div>
+		
+		<div class="column2of9">
+		
+		
+		
+			<h3>SAG</h3>
+		<!-- FORM is BLOCK ELEMENT, no p tags needed --> 	
+			 <form id = "SAGRevenueInputForm">	  
+			<!--label for="SAGRevenueInput">Rev</label--> 
+			<div> 
+			<input type="text" id="SAGRevenueInput" oninput="myFunction1()" value="">    
+			</div> 
+		</form> 
+		 
+		 
+		 <form id = "SAGProfitInputForm">	  
+			 
+			<div>
+			<input type="text" id="SAGProfitInput" oninput="myFunction2()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="SAGProfitMargin"></div></p>  
+				
+		 
+		   
+		<form id = "SAGEmployeesInputForm"> 
+		<input type="text" id="SAGEmployeesInput" oninput="myFunctionSAGEmployees()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="SAGEmployeeEBIT"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="SAGEmployeeRevenue"></div>		
+		</p>
+		
+		<form id = "SAGPPEInputForm"> 
+		<input type="text" id="SAGPPEInput" oninput="myFunctionSAGPPE()" > 
+		</form> 
+		
+		<i><div class="calculated" id="SAGEmployeePPE"></div></i>	
+		
+		 
+		</div><!--div class="column2of9"-->
+		
+		
+		<div class="column3of9">
+			<h3>SAP</h3>
+		 
+		<form id = "SAPRevenueInputForm">	  
+			<div> 	
+			<input type="text" id="SAPRevenueInput" oninput="myFunction3()" value="">    
+			</div> 
+			</form>
+		 		
+			
+		<!-- ADDING THIS FIXED ISSUE OF NON-APPEARING SAG EMPLOYEES --> 
+		<!-- FIXED: had to do with sequence in function initInput at top --> 	
+		<form id = "SAPEBITInputForm"> 
+			<div> 
+			<input type="text" id="SAPEBITInput" oninput="myFunction4()" value="">    
+			</div>
+			</form> 
+				
+				
+			 
+		</div>
+		
+		<div class="column4of9">
+			<h3>IBM</h3>
+		
+		<form id = "IBMRevenueInputForm">	  
+			<!--label for="SAGRevenueInput">Rev</label--> 
+			<div> 
+			<input type="text" id="IBMRevenueInput" oninput="myFunctionIBMRevenue()" value="">    
+			</div> 
+		</form> 
+		 
+		 
+		 <form id = "IBMProfitInputForm">	  
+			 
+			<div>
+			<input type="text" id="IBMProfitInput" oninput="myFunctionIBMProfit()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="IBMProfitMargin"></div></p>  
+				
+		 
+		   
+		<form id = "IBMEmployeesInputForm"> 
+		<input type="text" id="IBMEmployeesInput" oninput="myFunctionIBMEmployees()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="IBMEmployeeEBIT"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="IBMEmployeeRevenue"></div>		
+		</p>
+		
+		<form id = "IBMPPEInputForm"> 
+		<input type="text" id="IBMPPEInput" oninput="myFunctionIBMPPE()" > 
+		</form> 
+		
+		<i><div class="calculated" id="IBMEmployeePPE"></div></i>
+			 
+		</div>
+		<div class="column5of9">
+			<h3>ORACLE</h3>
+			<p>The next appearance of a two-wheeled riding machine was in 1865</p>
+		 
+		</div>
+		<div class="column6of9">
+			<h3>Bicycle Timeline</h3>
+			 
+		</div>
+		
+		
+		<div class="column7of9">
+			<h3>The First Bicycle</h3>
+			<p>In 1817 Baron von Drais invented a walking. </p>
+			 
+		</div>
+		<div class="column8of9">
+			<h3>Further Innovations</h3>
+			<p>The next appearance of a two-wheeled riding machine was in 1865</p>
+		 
+		</div>
+		<div class="column9of9">
+			<h3>Bicycle Timeline</h3>
+			 <p>The next appearance of a two-wheeled riding machine was in 1865</p>
+		</div>
+
+
+<script  type="text/javascript"> 
+    
+ // SAG
+ 
+
+function myFunction1() { 
+    var SAGRevenue = document.getElementById("SAGRevenueInput").value;
+    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
+    localStorage.SAGRevenue = SAGRevenue; 
+    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
+	 
+}    
+    
+function myFunction2() { 
+    var SAGProfit = document.getElementById("SAGProfitInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGProfit = SAGProfit; 
+    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
+
+function myFunctionSAGEmployees() { 
+	var SAGEmployees = document.getElementById("SAGEmployeesInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGEmployees = SAGEmployees; 
+} 
+ 
+ 
+function myFunctionSAGPPE() { 
+	var SAGPPE = document.getElementById("SAGPPEInput").value;
+    localStorage.SAGPPE = SAGPPE; 
+} 
+ 
+ 
+// SAP  
+ 
+ 
+function myFunction3() { 
+    var SAPRevenue = document.getElementById("SAPRevenueInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAPRevenue = SAPRevenue; 
+    //document.getElementById("locallystoredSAPRev").innerHTML = "locally stored SAP Revenue: " + localStorage.getItem('SAPRevenue'); // WHY NOT ? 
+	 
+}  
+
+
+function myFunction4() { 
+    var SAPEBIT = document.getElementById("SAPEBITInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAPEBIT = SAPEBIT; 
+    //document.getElementById("locallystoredSAPEBIT").innerHTML = "locally stored SAP EBIT: " + localStorage.getItem('SAPEBIT'); // WHY NOT ? 
+	 
+}  
+
+
+function myFunctionSAPEmployees() { 
+	var SAPEmployees = document.getElementById("SAPEmployeesInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAPEmployees = SAPEmployees; 
+}
+
+
+
+function myFunctionSAPPPE() { 
+	var SAPPPE = document.getElementById("SAPPPEInput").value;
+    localStorage.SAPPPE = SAPPPE; 
+}	
+
+
+
+// IBM
+
+
+function myFunctionIBMRevenue() { 
+    var IBMRevenue = document.getElementById("IBMRevenueInput").value;
+    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
+    localStorage.IBMRevenue = IBMRevenue; 
+    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
+	 
+}    
+    
+function myFunctionIBMProfit() { 
+    var IBMProfit = document.getElementById("IBMProfitInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.IBMProfit = IBMProfit; 
+    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
+
+function myFunctionIBMEmployees() { 
+	var IBMEmployees = document.getElementById("IBMEmployeesInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.IBMEmployees = IBMEmployees; 
+} 
+ 
+ 
+function myFunctionIBMPPE() { 
+	var IBMPPE = document.getElementById("IBMPPEInput").value;
+    localStorage.IBMPPE = IBMPPE; 
+} 
+
+
+
+
+
+
+//localStorage.setItem('SAP.Revenue', JSON.stringify(saprevenue));
+ 
+// Retrieve the object from storage
+//var sapstoredrevenue = JSON.parse(localStorage.getItem('SAP.Revenue'));
+   
+// CALCULATED RATIOS    
+// SEQUENCE MATTERS FOR CODE 		
+// SAG
+		
+var SAGprofitmargin = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGRevenue')).toFixed(3); 
+document.getElementById("SAGProfitMargin").innerHTML = SAGprofitmargin; 
+
+var SAGEmployeeEBIT = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeEBIT").innerHTML = SAGEmployeeEBIT;  
+
+var SAGEmployeeRevenue = (localStorage.getItem('SAGRevenue')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeRevenue").innerHTML = SAGEmployeeRevenue; 
+
+var SAGEmployeePPE = (localStorage.getItem('SAGPPE')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeePPE").innerHTML = SAGEmployeePPE; 
+
+	
+/***	
+var SAPprofitmargin = (localStorage.getItem('SAPEBIT')/localStorage.getItem('SAPRevenue')).toFixed(3); 
+document.getElementById("SAPprofitmargin").innerHTML = SAPprofitmargin; 
+
+var SAPEmployeeEBIT = (localStorage.getItem('SAPEBIT')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeeEBIT").innerHTML = SAPEmployeeEBIT;  
+
+ 
+var SAPEmployeeRevenue = (localStorage.getItem('SAPRevenue')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeeRevenue").innerHTML = SAPEmployeeRevenue;  
+
+ 
+
+var SAPEmployeePPE = (localStorage.getItem('SAPPPE')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeePPE").innerHTML = SAPEmployeePPE;  
+***/ 
+
+
+var IBMprofitmargin = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMRevenue')).toFixed(3); 
+document.getElementById("IBMProfitMargin").innerHTML = IBMprofitmargin; 
+
+var IBMEmployeeEBIT = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+document.getElementById("IBMEmployeeEBIT").innerHTML = IBMEmployeeEBIT;  
+
+var IBMEmployeeRevenue = (localStorage.getItem('IBMRevenue')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+document.getElementById("IBMEmployeeRevenue").innerHTML = IBMEmployeeRevenue; 
+
+var IBMEmployeePPE = (localStorage.getItem('IBMPPE')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+document.getElementById("IBMEmployeePPE").innerHTML = IBMEmployeePPE; 
+
+
+</script> 	
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--script src="js/bootstrap.min.js"></script-->
+		
+		
+		
+	</body>
+</html>
