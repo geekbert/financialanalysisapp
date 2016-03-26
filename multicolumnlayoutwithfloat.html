@@ -18,21 +18,34 @@
 				float: left;
 				margin: 10px;}	
 			p { 
-			font-size: 14px; 
+			font-size: 11px; 
 			}	
-			
-			
 				
 			div 
 				{
 					border: 1px dotted lightblue; 	
 				}	
-			input {width: 97px; }	
+			input {
+					width: 97px; 
+					background-color: lightyellow;
+				 
+			}	
 			
 			.calculated { 
-				border: 2px dotted orange; 
+				border: 1px dotted lightblue; 
+				font-size: 8pt;
 			}
 			
+			form { 
+			font-size: 8pt;
+			}
+			
+			textarea {
+					font-size: 8pt;
+					 
+					height: 60px;
+					width: 97px;
+			}	
 				
 		</style>	
 		
@@ -60,23 +73,24 @@ function initInput()
 	
 	//seems to work: http://stackoverflow.com/questions/2435525/best-practice-access-form-elements-by-html-id-or-name-attribute 
 	// SAG  
-	document.getElementById("SAGRevenueInputForm").SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
-	document.getElementById("SAGProfitInputForm").SAGProfitInput.value = localStorage.getItem('SAGProfit'); 
-	document.getElementById("SAGEmployeesInputForm").SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');	
-	document.getElementById("SAGPPEInputForm").SAGPPEInput.value = localStorage.getItem('SAGPPE');
+	//document.getElementById("SAGRevenueInputForm").SAGRevenueInput.value = localStorage.getItem('SAGRevenue');
+	//document.getElementById("SAGProfitInputForm").SAGProfitInput.value = localStorage.getItem('SAGProfit'); 
+	//document.getElementById("SAGEmployeesInputForm").SAGEmployeesInput.value = localStorage.getItem('SAGEmployees');	
+	//document.getElementById("SAGPPEInputForm").SAGPPEInput.value = localStorage.getItem('SAGPPE');
 	
 	// SAP
-	document.getElementById("SAPRevenueInputForm").SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
-	document.getElementById("SAPEBITInputForm").SAPEBITInput.value = localStorage.getItem('SAPEBIT'); 
+	//document.getElementById("SAPRevenueInputForm").SAPRevenueInput.value = localStorage.getItem('SAPRevenue');
+	//document.getElementById("SAPEBITInputForm").SAPEBITInput.value = localStorage.getItem('SAPEBIT'); 
 	//document.getElementById("SAPEmployeesInputForm").SAPEmployeesInput.value = localStorage.getItem('SAPEmployees'); 
 	//document.getElementById("SAPPPEInputForm").SAPPPEInput.value = localStorage.getItem('SAPPPE');
 	 
 	// IBM  
+	/***
 	document.getElementById("IBMRevenueInputForm").IBMRevenueInput.value = localStorage.getItem('IBMRevenue');
 	document.getElementById("IBMProfitInputForm").IBMProfitInput.value = localStorage.getItem('IBMProfit'); 
 	document.getElementById("IBMEmployeesInputForm").IBMEmployeesInput.value = localStorage.getItem('IBMEmployees');	
 	document.getElementById("IBMPPEInputForm").IBMPPEInput.value = localStorage.getItem('IBMPPE');
-	
+	***/ 
 	
 	}
 		
@@ -91,95 +105,498 @@ function initInput()
 
 <body onload="initInput()">
 
-		<h1>FINANCIAL ANALYSIS APP</h1>
+		<h1>FINANCIAL ANALYSIS APP - which company to invest vs work for? </h1> 
 		
 		<div class="column1of9">
 			<h3>2015</h3>
 			<p>Revenue (mio.)</p>
 			<p>EBIT (mio):</p>
 			<p>Operating Margin</p> 
-			<p>SAG Employees</p> 
+			<p>Employees</p> 
 			<p>EBIT/Employee</p>
 			<p>Revenue/Employee</p>
 			<p>PPE</p>
-			<p>PPE/Employee</p> 
+			<p>PPE/Employee</p>
+			<p>STRATEGY</p>
+			<p>P/E (KGV)</p>
+			<p>DuPont: ROE</p>
+			<p>TBD</p>
+
+			
 
 		 
 			 
 		</div>
 		
-		<div class="column2of9">
+			
 		
+	
+<div class="column2of9">
+<h3>SAG 14</h3>
 		
-		
-			<h3>SAG</h3>
-		<!-- FORM is BLOCK ELEMENT, no p tags needed --> 	
-			 <form id = "SAGRevenueInputForm">	  
+		<form id = "SAGRevenueInputForm2014">	  
 			<!--label for="SAGRevenueInput">Rev</label--> 
 			<div> 
-			<input type="text" id="SAGRevenueInput" oninput="myFunction1()" value="">    
+			<input type="text" id="SAGRevenueInput2014" oninput="myFunctionSAGRevenue2014()" value="">    
 			</div> 
 		</form> 
+			
 		 
-		 
-		 <form id = "SAGProfitInputForm">	  
+		 <form id = "SAGProfitInputForm2014">	  
 			 
 			<div>
-			<input type="text" id="SAGProfitInput" oninput="myFunction2()" value="">    
+			<input type="text" id="SAGProfitInput2014" oninput="myFunctionSAGProfit2014()" value="">    
 			</div> 
 		</form> 			
 		
 		  
-		 <div class= "calculated" id="SAGProfitMargin"></div></p>  
+		 <div class= "calculated" id="SAGProfitMargin2014"></div></p>  
 				
 		 
 		   
-		<form id = "SAGEmployeesInputForm"> 
-		<input type="text" id="SAGEmployeesInput" oninput="myFunctionSAGEmployees()" > 
+		<form id = "SAGEmployeesInputForm2014"> 
+		<input type="text" id="SAGEmployeesInput2014" oninput="myFunctionSAGEmployees2014()" > 
 		</form> 
 		 
 		 <p> 
-		<div class= "calculated" id="SAGEmployeeEBIT"></div>
+		<div class= "calculated" id="SAGEmployeeEBIT2014"></div>
 		 </p> 
 		
 		 <p> 
-		<div class= "calculated" id="SAGEmployeeRevenue"></div>		
+		<div class= "calculated" id="SAGEmployeeRevenue2014"></div>		
 		</p>
 		
-		<form id = "SAGPPEInputForm"> 
-		<input type="text" id="SAGPPEInput" oninput="myFunctionSAGPPE()" > 
+		<form id = "SAGPPEInputForm2014"> 
+		<input type="text" id="SAGPPEInput2014" oninput="myFunctionSAGPPE2014()" > 
 		</form> 
 		
-		<i><div class="calculated" id="SAGEmployeePPE"></div></i>	
+		<i><div class="calculated" id="SAGEmployeePPE2014"></div></i>
 		
-		 
-		</div><!--div class="column2of9"-->
-		
-		
-		<div class="column3of9">
-			<h3>SAP</h3>
-		 
-		<form id = "SAPRevenueInputForm">	  
-			<div> 	
-			<input type="text" id="SAPRevenueInput" oninput="myFunction3()" value="">    
-			</div> 
-			</form>
-		 		
-			
-		<!-- ADDING THIS FIXED ISSUE OF NON-APPEARING SAG EMPLOYEES --> 
-		<!-- FIXED: had to do with sequence in function initInput at top --> 	
-		<form id = "SAPEBITInputForm"> 
-			<div> 
-			<input type="text" id="SAPEBITInput" oninput="myFunction4()" value="">    
-			</div>
-			</form> 
-				
-				
+</div><!--div class="column2of9"-->
 			 
-		</div>
+<script  type="text/javascript"> 	 
+			 
+
+// SAG 2014 
 		
-		<div class="column4of9">
-			<h3>IBM</h3>
+// DEFINE FUNCTION 		
+function initSAGInput2014()	{ 
+
+// SAG 2014  
+	document.getElementById("SAGRevenueInputForm2014").SAGRevenueInput2014.value = localStorage.getItem('SAGRevenue2014');
+	document.getElementById("SAGProfitInputForm2014").SAGProfitInput2014.value = localStorage.getItem('SAGProfit2014'); 
+	document.getElementById("SAGEmployeesInputForm2014").SAGEmployeesInput2014.value = localStorage.getItem('SAGEmployees2014');	
+	document.getElementById("SAGPPEInputForm2014").SAGPPEInput2014.value = localStorage.getItem('SAGPPE2014');
+
+}
+
+// CALL FUNCTION 
+initSAGInput2014();
+
+
+function myFunctionSAGRevenue2014() { 
+    var SAGRevenue2014 = document.getElementById("SAGRevenueInput2014").value;
+    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
+    localStorage.SAGRevenue2014 = SAGRevenue2014; 
+    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
+	 
+}    
+    
+function myFunctionSAGProfit2014() { 
+    var SAGProfit2014 = document.getElementById("SAGProfitInput2014").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGProfit2014 = SAGProfit2014; 
+    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
+
+function myFunctionSAGEmployees2014() { 
+	var SAGEmployees2014 = document.getElementById("SAGEmployeesInput2014").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGEmployees2014 = SAGEmployees2014; 
+} 
+ 
+ 
+function myFunctionSAGPPE2014() { 
+	var SAGPPE2014 = document.getElementById("SAGPPEInput2014").value;
+    localStorage.SAGPPE2014 = SAGPPE2014; 
+} 	 
+		
+		
+var SAGprofitmargin2014 = (localStorage.getItem('SAGProfit2014')/localStorage.getItem('SAGRevenue2014')).toFixed(3); 
+document.getElementById("SAGProfitMargin2014").innerHTML = SAGprofitmargin2014; 
+
+var SAGEmployeeEBIT2014 = (localStorage.getItem('SAGProfit2014')/localStorage.getItem('SAGEmployees2014')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeEBIT2014").innerHTML = SAGEmployeeEBIT2014;  
+
+var SAGEmployeeRevenue2014 = (localStorage.getItem('SAGRevenue2014')/localStorage.getItem('SAGEmployees2014')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeRevenue2014").innerHTML = SAGEmployeeRevenue2014; 
+
+var SAGEmployeePPE2014 = (localStorage.getItem('SAGPPE2014')/localStorage.getItem('SAGEmployees2014')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeePPE2014").innerHTML = SAGEmployeePPE2014; 		
+			
+</script> 		
+
+
+
+
+
+<div class="column3of9">
+<h3>SAG 15</h3>
+		
+		<form id = "SAGRevenueInputForm2015">	  
+			<!--label for="SAGRevenueInput">Rev</label--> 
+			<div> 
+			<input type="text" id="SAGRevenueInput2015" oninput="myFunctionSAGRevenue2015()" value="">    
+			</div> 
+		</form> 
+			
+		 
+		 <form id = "SAGProfitInputForm2015">	  
+			 
+			<div>
+			<input type="text" id="SAGProfitInput2015" oninput="myFunctionSAGProfit2015()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="SAGProfitMargin2015"></div></p>  
+				
+		 
+		   
+		<form id = "SAGEmployeesInputForm2015"> 
+		<input type="text" id="SAGEmployeesInput2015" oninput="myFunctionSAGEmployees2015()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="SAGEmployeeEBIT2015"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="SAGEmployeeRevenue2015"></div>		
+		</p>
+		
+		<form id = "SAGPPEInputForm2015"> 
+		<input type="text" id="SAGPPEInput2015" oninput="myFunctionSAGPPE2015()" > 
+		</form> 
+		
+		<i><div class="calculated" id="SAGEmployeePPE2015"></div></i>
+		
+		<!-- EXPERIMENT SMALLEST REUSABLE ELEMENT --> 
+		<form id = "SAGStrategyInputForm2015"> 
+		<!--input type="text" id="SAGStrategyInput2015" oninput="myFunctionSAGStrategy2015()"--> 
+		</form> 
+		<textarea form="SAGStrategyInputForm2015" id="SAGStrategyInput2015" oninput="myFunctionSAGStrategy2015()" style="font-size:8pt">Ye who enter here		</textarea>
+	
+		<script  type="text/javascript"> 	
+		// DEFINE FUNCTION 			
+		function initSAGStrategyInput2015()	{ 
+		document.getElementById("SAGStrategyInputForm2015").SAGStrategyInput2015.value = localStorage.getItem('SAGStrategy2015');
+		}
+		// CALL FUNCTION 
+		initSAGStrategyInput2015();
+		
+		function myFunctionSAGStrategy2015() { 
+			var SAGStrategy2015 = document.getElementById("SAGStrategyInput2015").value;
+			localStorage.SAGStrategy2015 = SAGStrategy2015;   	
+		}  
+		
+		</script><!-- END EXPERIMENT SMALLEST REUSABLE ELEMENT --> 
+			
+				
+				
+		
+</div><!--div class="column3of9"-->	
+			 
+<script  type="text/javascript"> 	 
+			 
+
+// SAG 2015 
+		
+// DEFINE FUNCTION 		
+function initSAGInput2015()	{ 
+
+// SAG 2014  
+	document.getElementById("SAGRevenueInputForm2015").SAGRevenueInput2015.value = localStorage.getItem('SAGRevenue2015');
+	document.getElementById("SAGProfitInputForm2015").SAGProfitInput2015.value = localStorage.getItem('SAGProfit2015'); 
+	document.getElementById("SAGEmployeesInputForm2015").SAGEmployeesInput2015.value = localStorage.getItem('SAGEmployees2015');	
+	document.getElementById("SAGPPEInputForm2015").SAGPPEInput2015.value = localStorage.getItem('SAGPPE2015');
+
+}
+
+// CALL FUNCTION 
+initSAGInput2015();
+
+
+function myFunctionSAGRevenue2015() { 
+    var SAGRevenue2015 = document.getElementById("SAGRevenueInput2015").value;
+    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
+    localStorage.SAGRevenue2015 = SAGRevenue2015; 
+    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
+	 
+}    
+    
+function myFunctionSAGProfit2015() { 
+    var SAGProfit2015 = document.getElementById("SAGProfitInput2015").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGProfit2015 = SAGProfit2015; 
+    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
+
+function myFunctionSAGEmployees2015() { 
+	var SAGEmployees2015 = document.getElementById("SAGEmployeesInput2015").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAGEmployees2015 = SAGEmployees2015; 
+} 
+ 
+ 
+function myFunctionSAGPPE2015() { 
+	var SAGPPE2015 = document.getElementById("SAGPPEInput2015").value;
+    localStorage.SAGPPE2015 = SAGPPE2015; 
+} 	 
+		
+		
+var SAGprofitmargin2015 = (localStorage.getItem('SAGProfit2015')/localStorage.getItem('SAGRevenue2015')).toFixed(3); 
+document.getElementById("SAGProfitMargin2015").innerHTML = SAGprofitmargin2015; 
+
+var SAGEmployeeEBIT2015 = (localStorage.getItem('SAGProfit2015')/localStorage.getItem('SAGEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeEBIT2015").innerHTML = SAGEmployeeEBIT2015;  
+
+var SAGEmployeeRevenue2015 = (localStorage.getItem('SAGRevenue2015')/localStorage.getItem('SAGEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeeRevenue2015").innerHTML = SAGEmployeeRevenue2015; 
+
+var SAGEmployeePPE2015 = (localStorage.getItem('SAGPPE2015')/localStorage.getItem('SAGEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("SAGEmployeePPE2015").innerHTML = SAGEmployeePPE2015; 		
+			
+</script> 
+
+
+
+<div class="column4of9">
+<h3>SAP 15</h3>
+		
+		<form id = "SAPRevenueInputForm2015">	  
+			<!--label for="SAGRevenueInput">Rev</label--> 
+			<div> 
+			<input type="text" id="SAPRevenueInput2015" oninput="myFunctionSAPRevenue2015()" value="">    
+			</div> 
+		</form> 
+			
+		 
+		 <form id = "SAPProfitInputForm2015">	  
+			 
+			<div>
+			<input type="text" id="SAPProfitInput2015" oninput="myFunctionSAPProfit2015()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="SAPProfitMargin2015"></div></p>  
+				
+		 
+		   
+		<form id = "SAPEmployeesInputForm2015"> 
+		<input type="text" id="SAPEmployeesInput2015" oninput="myFunctionSAPEmployees2015()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="SAPEmployeeEBIT2015"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="SAPEmployeeRevenue2015"></div>		
+		</p>
+		
+		<form id = "SAPPPEInputForm2015"> 
+		<input type="text" id="SAPPPEInput2015" oninput="myFunctionSAPPPE2015()" > 
+		</form> 
+		
+		<i><div class="calculated" id="SAPEmployeePPE2015"></div></i>
+		
+</div><!--div class="column4of9"-->	
+			 
+<script  type="text/javascript"> 	 
+			 
+
+// SAG 2015 
+		
+// DEFINE FUNCTION 		
+function initSAPInput2015()	{ 
+
+// SAG 2014  
+	document.getElementById("SAPRevenueInputForm2015").SAPRevenueInput2015.value = localStorage.getItem('SAPRevenue2015');
+	document.getElementById("SAPProfitInputForm2015").SAPProfitInput2015.value = localStorage.getItem('SAPProfit2015'); 
+	document.getElementById("SAPEmployeesInputForm2015").SAPEmployeesInput2015.value = localStorage.getItem('SAPEmployees2015');	
+	document.getElementById("SAPPPEInputForm2015").SAPPPEInput2015.value = localStorage.getItem('SAPPPE2015');
+
+}
+
+// CALL FUNCTION 
+initSAPInput2015();
+
+
+function myFunctionSAPRevenue2015() { 
+    var SAPRevenue2015 = document.getElementById("SAPRevenueInput2015").value;
+    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
+    localStorage.SAPRevenue2015 = SAPRevenue2015; 
+    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
+	 
+}    
+    
+function myFunctionSAPProfit2015() { 
+    var SAPProfit2015 = document.getElementById("SAPProfitInput2015").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAPProfit2015 = SAPProfit2015; 
+    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
+
+function myFunctionSAPEmployees2015() { 
+	var SAPEmployees2015 = document.getElementById("SAPEmployeesInput2015").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.SAPEmployees2015 = SAPEmployees2015; 
+} 
+ 
+ 
+function myFunctionSAPPPE2015() { 
+	var SAPPPE2015 = document.getElementById("SAPPPEInput2015").value;
+    localStorage.SAPPPE2015 = SAPPPE2015; 
+} 	 
+		
+		
+var SAPprofitmargin2015 = (localStorage.getItem('SAPProfit2015')/localStorage.getItem('SAPRevenue2015')).toFixed(3); 
+document.getElementById("SAPProfitMargin2015").innerHTML = SAPprofitmargin2015; 
+
+var SAPEmployeeEBIT2015 = (localStorage.getItem('SAPProfit2015')/localStorage.getItem('SAPEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeeEBIT2015").innerHTML = SAPEmployeeEBIT2015;  
+
+var SAPEmployeeRevenue2015 = (localStorage.getItem('SAPRevenue2015')/localStorage.getItem('SAPEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeeRevenue2015").innerHTML = SAPEmployeeRevenue2015; 
+
+var SAPEmployeePPE2015 = (localStorage.getItem('SAPPPE2015')/localStorage.getItem('SAPEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("SAPEmployeePPE2015").innerHTML = SAPEmployeePPE2015; 		
+			
+</script> 	
+
+
+
+<div class="column6of9">
+<h3>ORA</h3>
+		
+		<form id = "ORARevenueInputForm2015">	  
+			<div> 
+			<input type="text" id="ORARevenueInput2015" oninput="myFunctionORARevenue2015()" value="">    
+			</div> 
+		</form> 
+			
+		 
+		 <form id = "ORAProfitInputForm2015">	  
+			 
+			<div>
+			<input type="text" id="ORAProfitInput2015" oninput="myFunctionORAProfit2015()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="ORAProfitMargin2015"></div></p>  
+				
+		 
+		   
+		<form id = "ORAEmployeesInputForm2015"> 
+		<input type="text" id="ORAEmployeesInput2015" oninput="myFunctionORAEmployees2015()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="ORAEmployeeEBIT2015"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="ORAEmployeeRevenue2015"></div>		
+		</p>
+		
+		<form id = "ORAPPEInputForm2015"> 
+		<input type="text" id="ORAPPEInput2015" oninput="myFunctionORAPPE2015()" > 
+		</form> 
+		
+		<i><div class="calculated" id="ORAEmployeePPE2015"></div></i>
+		
+</div><!--div class="column6of9"-->	
+			 
+<script  type="text/javascript"> 	 
+			 
+
+// ORA 2015 
+		
+// DEFINE FUNCTION 		
+function initORAInput2015()	{ 
+
+// SAG 2014  
+	document.getElementById("ORARevenueInputForm2015").ORARevenueInput2015.value = localStorage.getItem('ORARevenue2015');
+	document.getElementById("ORAProfitInputForm2015").ORAProfitInput2015.value = localStorage.getItem('ORAProfit2015'); 
+	document.getElementById("ORAEmployeesInputForm2015").ORAEmployeesInput2015.value = localStorage.getItem('ORAEmployees2015');	
+	document.getElementById("ORAPPEInputForm2015").ORAPPEInput2015.value = localStorage.getItem('ORAPPE2015');
+
+}
+
+// CALL FUNCTION 
+initORAInput2015();
+
+
+function myFunctionORARevenue2015() { 
+    var ORARevenue2015 = document.getElementById("ORARevenueInput2015").value;
+    localStorage.ORARevenue2015 = ORARevenue2015; 
+	 
+}    
+    
+function myFunctionORAProfit2015() { 
+    var ORAProfit2015 = document.getElementById("ORAProfitInput2015").value;
+    localStorage.ORAProfit2015 = ORAProfit2015; 
+	 
+}     
+ 
+
+function myFunctionORAEmployees2015() { 
+	var ORAEmployees2015 = document.getElementById("ORAEmployeesInput2015").value;
+    localStorage.ORAEmployees2015 = ORAEmployees2015; 
+} 
+ 
+ 
+function myFunctionORAPPE2015() { 
+	var ORAPPE2015 = document.getElementById("ORAPPEInput2015").value;
+    localStorage.ORAPPE2015 = ORAPPE2015; 
+} 	 
+		
+		
+var ORAprofitmargin2015 = (localStorage.getItem('ORAProfit2015')/localStorage.getItem('ORARevenue2015')).toFixed(3); 
+document.getElementById("ORAProfitMargin2015").innerHTML = ORAprofitmargin2015; 
+
+var ORAEmployeeEBIT2015 = (localStorage.getItem('ORAProfit2015')/localStorage.getItem('ORAEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("ORAEmployeeEBIT2015").innerHTML = ORAEmployeeEBIT2015;  
+
+var ORAEmployeeRevenue2015 = (localStorage.getItem('ORARevenue2015')/localStorage.getItem('ORAEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("ORAEmployeeRevenue2015").innerHTML = ORAEmployeeRevenue2015; 
+
+var ORAEmployeePPE2015 = (localStorage.getItem('ORAPPE2015')/localStorage.getItem('ORAEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("ORAEmployeePPE2015").innerHTML = ORAEmployeePPE2015; 		
+			
+</script> 	
+		 
+	
+		
+		
+	
+		
+		
+
+		
+	
+		
+<div class="column5of9">
+<h3>IBM</h3>
 		
 		<form id = "IBMRevenueInputForm">	  
 			<!--label for="SAGRevenueInput">Rev</label--> 
@@ -218,39 +635,393 @@ function initInput()
 		</form> 
 		
 		<i><div class="calculated" id="IBMEmployeePPE"></div></i>
+		
+</div><!--div class="column5of9"-->
 			 
-		</div>
-		<div class="column5of9">
-			<h3>ORACLE</h3>
-			<p>The next appearance of a two-wheeled riding machine was in 1865</p>
-		 
-		</div>
-		<div class="column6of9">
-			<h3>Bicycle Timeline</h3>
+<script  type="text/javascript"> 	 
 			 
-		</div>
+
+// IBM
+		
+// DEFINE FUNCTION 		
+function initIBMInput()	{ 
+
+// IBM  
+	document.getElementById("IBMRevenueInputForm").IBMRevenueInput.value = localStorage.getItem('IBMRevenue');
+	document.getElementById("IBMProfitInputForm").IBMProfitInput.value = localStorage.getItem('IBMProfit'); 
+	document.getElementById("IBMEmployeesInputForm").IBMEmployeesInput.value = localStorage.getItem('IBMEmployees');	
+	document.getElementById("IBMPPEInputForm").IBMPPEInput.value = localStorage.getItem('IBMPPE');
+
+}
+
+// CALL FUNCTION 
+initIBMInput();
+
+
+function myFunctionIBMRevenue() { 
+    var IBMRevenue = document.getElementById("IBMRevenueInput").value;
+    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
+    localStorage.IBMRevenue = IBMRevenue; 
+    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
+	 
+}    
+    
+function myFunctionIBMProfit() { 
+    var IBMProfit = document.getElementById("IBMProfitInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.IBMProfit = IBMProfit; 
+    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
+	 
+}     
+ 
+
+function myFunctionIBMEmployees() { 
+	var IBMEmployees = document.getElementById("IBMEmployeesInput").value;
+    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
+    localStorage.IBMEmployees = IBMEmployees; 
+} 
+ 
+ 
+function myFunctionIBMPPE() { 
+	var IBMPPE = document.getElementById("IBMPPEInput").value;
+    localStorage.IBMPPE = IBMPPE; 
+} 	 
 		
 		
-		<div class="column7of9">
-			<h3>The First Bicycle</h3>
-			<p>In 1817 Baron von Drais invented a walking. </p>
+var IBMprofitmargin = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMRevenue')).toFixed(3); 
+document.getElementById("IBMProfitMargin").innerHTML = IBMprofitmargin; 
+
+var IBMEmployeeEBIT = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+document.getElementById("IBMEmployeeEBIT").innerHTML = IBMEmployeeEBIT;  
+
+var IBMEmployeeRevenue = (localStorage.getItem('IBMRevenue')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+document.getElementById("IBMEmployeeRevenue").innerHTML = IBMEmployeeRevenue; 
+
+var IBMEmployeePPE = (localStorage.getItem('IBMPPE')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+document.getElementById("IBMEmployeePPE").innerHTML = IBMEmployeePPE; 		
+			
+</script> 		
 			 
-		</div>
-		<div class="column8of9">
-			<h3>Further Innovations</h3>
-			<p>The next appearance of a two-wheeled riding machine was in 1865</p>
+			 
+<div class="column9of9">
+<h3>MS</h3>
+		
+		<form id = "MSRevenueInputForm2015">	  
+			<div> 
+			<input type="text" id="MSRevenueInput2015" oninput="myFunctionMSRevenue2015()" value="">    
+			</div> 
+		</form> 
+			
 		 
-		</div>
-		<div class="column9of9">
-			<h3>Bicycle Timeline</h3>
-			 <p>The next appearance of a two-wheeled riding machine was in 1865</p>
-		</div>
+		 <form id = "MSProfitInputForm2015">	  
+			 
+			<div>
+			<input type="text" id="MSProfitInput2015" oninput="myFunctionMSProfit2015()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="MSProfitMargin2015"></div></p>  
+				
+		 
+		   
+		<form id = "MSEmployeesInputForm2015"> 
+		<input type="text" id="MSEmployeesInput2015" oninput="myFunctionMSEmployees2015()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="MSEmployeeEBIT2015"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="MSEmployeeRevenue2015"></div>		
+		</p>
+		
+		<form id = "MSPPEInputForm2015"> 
+		<input type="text" id="MSPPEInput2015" oninput="myFunctionMSPPE2015()" > 
+		</form> 
+		
+		<i><div class="calculated" id="MSEmployeePPE2015"></div></i>
+		
+</div><!--div class="column9of9"-->	
+			 
+<script  type="text/javascript"> 	 
+			 
+
+// MS 2015 
+		
+// DEFINE FUNCTION 		
+function initMSInput2015()	{ 
+
+// SAG 2014  
+	document.getElementById("MSRevenueInputForm2015").MSRevenueInput2015.value = localStorage.getItem('MSRevenue2015');
+	document.getElementById("MSProfitInputForm2015").MSProfitInput2015.value = localStorage.getItem('MSProfit2015'); 
+	document.getElementById("MSEmployeesInputForm2015").MSEmployeesInput2015.value = localStorage.getItem('MSEmployees2015');	
+	document.getElementById("MSPPEInputForm2015").MSPPEInput2015.value = localStorage.getItem('MSPPE2015');
+
+}
+
+// CALL FUNCTION 
+initMSInput2015();
+
+
+function myFunctionMSRevenue2015() { 
+    var MSRevenue2015 = document.getElementById("MSRevenueInput2015").value;
+    localStorage.MSRevenue2015 = MSRevenue2015; 
+	 
+}    
+    
+function myFunctionMSProfit2015() { 
+    var MSProfit2015 = document.getElementById("MSProfitInput2015").value;
+    localStorage.MSProfit2015 = MSProfit2015; 
+	 
+}     
+ 
+
+function myFunctionMSEmployees2015() { 
+	var MSEmployees2015 = document.getElementById("MSEmployeesInput2015").value;
+    localStorage.MSEmployees2015 = MSEmployees2015; 
+} 
+ 
+ 
+function myFunctionMSPPE2015() { 
+	var MSPPE2015 = document.getElementById("MSPPEInput2015").value;
+    localStorage.MSPPE2015 = MSPPE2015; 
+} 	 
+		
+		
+var MSprofitmargin2015 = (localStorage.getItem('MSProfit2015')/localStorage.getItem('MSRevenue2015')).toFixed(3); 
+document.getElementById("MSProfitMargin2015").innerHTML = MSprofitmargin2015; 
+
+var MSEmployeeEBIT2015 = (localStorage.getItem('MSProfit2015')/localStorage.getItem('MSEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("MSEmployeeEBIT2015").innerHTML = MSEmployeeEBIT2015;  
+
+var MSEmployeeRevenue2015 = (localStorage.getItem('MSRevenue2015')/localStorage.getItem('MSEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("MSEmployeeRevenue2015").innerHTML = MSEmployeeRevenue2015; 
+
+var MSEmployeePPE2015 = (localStorage.getItem('MSPPE2015')/localStorage.getItem('MSEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("MSEmployeePPE2015").innerHTML = MSEmployeePPE2015; 		
+			
+</script> 
+			 
+			 
+			 
+
+		
+<div class="column6of9">
+<h3>APPLE</h3>
+		
+		<form id = "AAPLRevenueInputForm2015">	  
+			<div> 
+			<input type="text" id="AAPLRevenueInput2015" oninput="myFunctionAAPLRevenue2015()" value="">    
+			</div> 
+		</form> 
+			
+		 
+		 <form id = "AAPLProfitInputForm2015">	  
+			 
+			<div>
+			<input type="text" id="AAPLProfitInput2015" oninput="myFunctionAAPLProfit2015()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="AAPLProfitMargin2015"></div></p>  
+				
+		 
+		   
+		<form id = "AAPLEmployeesInputForm2015"> 
+		<input type="text" id="AAPLEmployeesInput2015" oninput="myFunctionAAPLEmployees2015()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="AAPLEmployeeEBIT2015"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="AAPLEmployeeRevenue2015"></div>		
+		</p>
+		
+		<form id = "AAPLPPEInputForm2015"> 
+		<input type="text" id="AAPLPPEInput2015" oninput="myFunctionAAPLPPE2015()" > 
+		</form> 
+		
+		<i><div class="calculated" id="AAPLEmployeePPE2015"></div></i>
+		
+</div><!--div class="column6of9"-->	
+			 
+<script  type="text/javascript"> 	 
+			 
+
+// APPLE 2015 
+		
+// DEFINE FUNCTION 		
+function initAAPLInput2015()	{ 
+
+// SAG 2014  
+	document.getElementById("AAPLRevenueInputForm2015").AAPLRevenueInput2015.value = localStorage.getItem('AAPLRevenue2015');
+	document.getElementById("AAPLProfitInputForm2015").AAPLProfitInput2015.value = localStorage.getItem('AAPLProfit2015'); 
+	document.getElementById("AAPLEmployeesInputForm2015").AAPLEmployeesInput2015.value = localStorage.getItem('AAPLEmployees2015');	
+	document.getElementById("AAPLPPEInputForm2015").AAPLPPEInput2015.value = localStorage.getItem('AAPLPPE2015');
+
+}
+
+// CALL FUNCTION 
+initAAPLInput2015();
+
+
+function myFunctionAAPLRevenue2015() { 
+    var AAPLRevenue2015 = document.getElementById("AAPLRevenueInput2015").value;
+    localStorage.AAPLRevenue2015 = AAPLRevenue2015; 
+	 
+}    
+    
+function myFunctionAAPLProfit2015() { 
+    var AAPLProfit2015 = document.getElementById("AAPLProfitInput2015").value;
+    localStorage.AAPLProfit2015 = AAPLProfit2015; 
+	 
+}     
+ 
+
+function myFunctionAAPLEmployees2015() { 
+	var AAPLEmployees2015 = document.getElementById("AAPLEmployeesInput2015").value;
+    localStorage.AAPLEmployees2015 = AAPLEmployees2015; 
+} 
+ 
+ 
+function myFunctionAAPLPPE2015() { 
+	var AAPLPPE2015 = document.getElementById("AAPLPPEInput2015").value;
+    localStorage.AAPLPPE2015 = AAPLPPE2015; 
+} 	 
+		
+		
+var AAPLprofitmargin2015 = (localStorage.getItem('AAPLProfit2015')/localStorage.getItem('AAPLRevenue2015')).toFixed(3); 
+document.getElementById("AAPLProfitMargin2015").innerHTML = AAPLprofitmargin2015; 
+
+var AAPLEmployeeEBIT2015 = (localStorage.getItem('AAPLProfit2015')/localStorage.getItem('AAPLEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("AAPLEmployeeEBIT2015").innerHTML = AAPLEmployeeEBIT2015;  
+
+var AAPLEmployeeRevenue2015 = (localStorage.getItem('AAPLRevenue2015')/localStorage.getItem('AAPLEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("AAPLEmployeeRevenue2015").innerHTML = AAPLEmployeeRevenue2015; 
+
+var AAPLEmployeePPE2015 = (localStorage.getItem('AAPLPPE2015')/localStorage.getItem('AAPLEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("AAPLEmployeePPE2015").innerHTML = AAPLEmployeePPE2015; 		
+			
+</script> 	
+			 
+
+<div class="column6of9">
+<h3>GOOG</h3>
+		
+		<form id = "GOOGRevenueInputForm2015">	  
+			<div> 
+			<input type="text" id="GOOGRevenueInput2015" oninput="myFunctionGOOGRevenue2015()" value="">    
+			</div> 
+		</form> 
+			
+		 
+		 <form id = "GOOGProfitInputForm2015">	  
+			 
+			<div>
+			<input type="text" id="GOOGProfitInput2015" oninput="myFunctionGOOGProfit2015()" value="">    
+			</div> 
+		</form> 			
+		
+		  
+		 <div class= "calculated" id="GOOGProfitMargin2015"></div></p>  
+				
+		 
+		   
+		<form id = "GOOGEmployeesInputForm2015"> 
+		<input type="text" id="GOOGEmployeesInput2015" oninput="myFunctionGOOGEmployees2015()" > 
+		</form> 
+		 
+		 <p> 
+		<div class= "calculated" id="GOOGEmployeeEBIT2015"></div>
+		 </p> 
+		
+		 <p> 
+		<div class= "calculated" id="GOOGEmployeeRevenue2015"></div>		
+		</p>
+		
+		<form id = "GOOGPPEInputForm2015"> 
+		<input type="text" id="GOOGPPEInput2015" oninput="myFunctionGOOGPPE2015()" > 
+		</form> 
+		
+		<i><div class="calculated" id="GOOGEmployeePPE2015"></div></i>
+		
+</div><!--div class="column6of9"-->	
+			 
+<script  type="text/javascript"> 	 
+			 
+
+// GOOG 2015 
+		
+// DEFINE FUNCTION 		
+function initGOOGInput2015()	{ 
+
+// SAG 2014  
+	document.getElementById("GOOGRevenueInputForm2015").GOOGRevenueInput2015.value = localStorage.getItem('GOOGRevenue2015');
+	document.getElementById("GOOGProfitInputForm2015").GOOGProfitInput2015.value = localStorage.getItem('GOOGProfit2015'); 
+	document.getElementById("GOOGEmployeesInputForm2015").GOOGEmployeesInput2015.value = localStorage.getItem('GOOGEmployees2015');	
+	document.getElementById("GOOGPPEInputForm2015").GOOGPPEInput2015.value = localStorage.getItem('GOOGPPE2015');
+
+}
+
+// CALL FUNCTION 
+initGOOGInput2015();
+
+
+function myFunctionGOOGRevenue2015() { 
+    var GOOGRevenue2015 = document.getElementById("GOOGRevenueInput2015").value;
+    localStorage.GOOGRevenue2015 = GOOGRevenue2015; 
+	 
+}    
+    
+function myFunctionGOOGProfit2015() { 
+    var GOOGProfit2015 = document.getElementById("GOOGProfitInput2015").value;
+    localStorage.GOOGProfit2015 = GOOGProfit2015; 
+	 
+}     
+ 
+
+function myFunctionGOOGEmployees2015() { 
+	var GOOGEmployees2015 = document.getElementById("GOOGEmployeesInput2015").value;
+    localStorage.GOOGEmployees2015 = GOOGEmployees2015; 
+} 
+ 
+ 
+function myFunctionGOOGPPE2015() { 
+	var GOOGPPE2015 = document.getElementById("GOOGPPEInput2015").value;
+    localStorage.GOOGPPE2015 = GOOGPPE2015; 
+} 	 
+		
+		
+var GOOGprofitmargin2015 = (localStorage.getItem('GOOGProfit2015')/localStorage.getItem('GOOGRevenue2015')).toFixed(3); 
+document.getElementById("GOOGProfitMargin2015").innerHTML = GOOGprofitmargin2015; 
+
+var GOOGEmployeeEBIT2015 = (localStorage.getItem('GOOGProfit2015')/localStorage.getItem('GOOGEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("GOOGEmployeeEBIT2015").innerHTML = GOOGEmployeeEBIT2015;  
+
+var GOOGEmployeeRevenue2015 = (localStorage.getItem('GOOGRevenue2015')/localStorage.getItem('GOOGEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("GOOGEmployeeRevenue2015").innerHTML = GOOGEmployeeRevenue2015; 
+
+var GOOGEmployeePPE2015 = (localStorage.getItem('GOOGPPE2015')/localStorage.getItem('GOOGEmployees2015')).toFixed(3)*1000000; 
+document.getElementById("GOOGEmployeePPE2015").innerHTML = GOOGEmployeePPE2015; 		
+			
+</script> 	
+		 
+		 
+		
+		
+
+		
 
 
 <script  type="text/javascript"> 
     
- // SAG
- 
+ // SAG old 
+ /***
 
 function myFunction1() { 
     var SAGRevenue = document.getElementById("SAGRevenueInput").value;
@@ -281,9 +1052,10 @@ function myFunctionSAGPPE() {
     localStorage.SAGPPE = SAGPPE; 
 } 
  
+***/ 	 
  
 // SAP  
- 
+/*** 
  
 function myFunction3() { 
     var SAPRevenue = document.getElementById("SAPRevenueInput").value;
@@ -316,7 +1088,9 @@ function myFunctionSAPPPE() {
     localStorage.SAPPPE = SAPPPE; 
 }	
 
+***/ 
 
+/*** pasted in IBM DIV 
 
 // IBM
 
@@ -351,7 +1125,7 @@ function myFunctionIBMPPE() {
 } 
 
 
-
+***/ 
 
 
 
@@ -364,6 +1138,7 @@ function myFunctionIBMPPE() {
 // SEQUENCE MATTERS FOR CODE 		
 // SAG
 		
+/***		
 var SAGprofitmargin = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGRevenue')).toFixed(3); 
 document.getElementById("SAGProfitMargin").innerHTML = SAGprofitmargin; 
 
@@ -375,6 +1150,7 @@ document.getElementById("SAGEmployeeRevenue").innerHTML = SAGEmployeeRevenue;
 
 var SAGEmployeePPE = (localStorage.getItem('SAGPPE')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
 document.getElementById("SAGEmployeePPE").innerHTML = SAGEmployeePPE; 
+***/ 
 
 	
 /***	
@@ -395,6 +1171,7 @@ document.getElementById("SAPEmployeePPE").innerHTML = SAPEmployeePPE;
 ***/ 
 
 
+/*** pasted in IBM DIV 
 var IBMprofitmargin = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMRevenue')).toFixed(3); 
 document.getElementById("IBMProfitMargin").innerHTML = IBMprofitmargin; 
 
@@ -406,9 +1183,11 @@ document.getElementById("IBMEmployeeRevenue").innerHTML = IBMEmployeeRevenue;
 
 var IBMEmployeePPE = (localStorage.getItem('IBMPPE')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
 document.getElementById("IBMEmployeePPE").innerHTML = IBMEmployeePPE; 
+***/ 
 
 
-</script> 	
+
+</script> 		
 
 
 
