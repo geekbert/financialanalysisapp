@@ -45,7 +45,18 @@
 					 
 					height: 60px;
 					width: 97px;
-			}	
+			}		
+			
+			footer {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				height: 100px;
+				width: 100%;
+				border: 1px dotted lightblue; 	
+				 text-indent: 10px;
+			
+			}
 				
 		</style>	
 		
@@ -110,8 +121,10 @@ function initInput()
 		<div class="column1of9">
 			<h3>2015</h3>
 			<p>Revenue (mio.)</p>
+			<p>Cost of Sales</p>
+			<p>Gross Profit Margin</p>
 			<p>EBIT (mio):</p>
-			<p>Operating Margin</p> 
+			<p>Operating Margin</p> 	
 			<p>Employees</p> 
 			<p>EBIT/Employee</p>
 			<p>Revenue/Employee</p>
@@ -120,6 +133,7 @@ function initInput()
 			<p>STRATEGY</p>
 			<p>P/E (KGV)</p>
 			<p>DuPont: ROE</p>
+			<p>SG&A: R&D, Sales & Marketing, General & Admin</p>
 			<p>TBD</p>
 
 			
@@ -140,7 +154,36 @@ function initInput()
 			<input type="text" id="SAGRevenueInput2014" oninput="myFunctionSAGRevenue2014()" value="">    
 			</div> 
 		</form> 
+		
+		<!-- COST OF SALES --> 
+		<form id = "SAGCostSalesInputForm2014">	  
+			<div> 
+			<input type="text" id="SAGCostSalesInput2014" oninput="myFunctionSAGCostSales2014()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initSAGCostSalesInput2014()	{ 
+			document.getElementById("SAGCostSalesInputForm2014").SAGCostSalesInput2014.value = localStorage.getItem('SAGCostSales2014');
+		}
+
+		// CALL FUNCTION 
+		initSAGCostSalesInput2014();	
 			
+		function myFunctionSAGCostSales2014() { 
+			var SAGCostSales2014 = document.getElementById("SAGCostSalesInput2014").value;
+			localStorage.SAGCostSales2014 = SAGCostSales2014; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="SAGGrossMargin2014"></div></p>  	
+		<script  type="text/javascript"> 	
+		//var SAGgrossmargin2014 = (localStorage.getItem('SAGProfit2014')/localStorage.getItem('SAGRevenue2014')).toFixed(3); 
+		var SAGGrossMargin2014 = ((localStorage.getItem('SAGRevenue2014')-localStorage.getItem('SAGCostSales2014')) / localStorage.getItem('SAGRevenue2014')).toFixed(2); 
+		document.getElementById("SAGGrossMargin2014").innerHTML = SAGGrossMargin2014; 			
+		</script><!-- END GROSS MARGIN -->   				
+		 
 		 
 		 <form id = "SAGProfitInputForm2014">	  
 			 
@@ -251,6 +294,39 @@ document.getElementById("SAGEmployeePPE2014").innerHTML = SAGEmployeePPE2014;
 			<input type="text" id="SAGRevenueInput2015" oninput="myFunctionSAGRevenue2015()" value="">    
 			</div> 
 		</form> 
+		
+		
+		<!-- COST OF SALES --> 
+		<form id = "SAGCostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="SAGCostSalesInput2015" oninput="myFunctionSAGCostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initSAGCostSalesInput2015()	{ 
+			document.getElementById("SAGCostSalesInputForm2015").SAGCostSalesInput2015.value = localStorage.getItem('SAGCostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initSAGCostSalesInput2015();	
+			
+		function myFunctionSAGCostSales2015() { 
+			var SAGCostSales2015 = document.getElementById("SAGCostSalesInput2015").value;
+			localStorage.SAGCostSales2015 = SAGCostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="SAGGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var SAGGrossMargin2015 = ((localStorage.getItem('SAGRevenue2015')-localStorage.getItem('SAGCostSales2015')) / localStorage.getItem('SAGRevenue2015')).toFixed(2); 
+		document.getElementById("SAGGrossMargin2015").innerHTML = SAGGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->   				
+		
+		
+		
+		
 			
 		 
 		 <form id = "SAGProfitInputForm2015">	  
@@ -385,6 +461,38 @@ document.getElementById("SAGEmployeePPE2015").innerHTML = SAGEmployeePPE2015;
 			</div> 
 		</form> 
 			
+			
+		<!-- COST OF SALES --> 
+		<form id = "SAPCostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="SAPCostSalesInput2015" oninput="myFunctionSAPCostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initSAPCostSalesInput2015()	{ 
+			document.getElementById("SAPCostSalesInputForm2015").SAPCostSalesInput2015.value = localStorage.getItem('SAPCostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initSAPCostSalesInput2015();	
+			
+		function myFunctionSAPCostSales2015() { 
+			var SAPCostSales2015 = document.getElementById("SAPCostSalesInput2015").value;
+			localStorage.SAPCostSales2015 = SAPCostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="SAPGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var SAPGrossMargin2015 = ((localStorage.getItem('SAPRevenue2015')-localStorage.getItem('SAPCostSales2015')) / localStorage.getItem('SAPRevenue2015')).toFixed(2); 
+		document.getElementById("SAPGrossMargin2015").innerHTML = SAPGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->   		
+			
+			
+			
+			
 		 
 		 <form id = "SAPProfitInputForm2015">	  
 			 
@@ -492,6 +600,39 @@ document.getElementById("SAPEmployeePPE2015").innerHTML = SAPEmployeePPE2015;
 			<input type="text" id="ORARevenueInput2015" oninput="myFunctionORARevenue2015()" value="">    
 			</div> 
 		</form> 
+		
+		
+		<!-- COST OF SALES --> 
+		<form id = "ORACostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="ORACostSalesInput2015" oninput="myFunctionORACostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initORACostSalesInput2015()	{ 
+			document.getElementById("ORACostSalesInputForm2015").ORACostSalesInput2015.value = localStorage.getItem('ORACostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initORACostSalesInput2015();	
+			
+		function myFunctionORACostSales2015() { 
+			var ORACostSales2015 = document.getElementById("ORACostSalesInput2015").value;
+			localStorage.ORACostSales2015 = ORACostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="ORAGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var ORAGrossMargin2015 = ((localStorage.getItem('ORARevenue2015')-localStorage.getItem('ORACostSales2015')) / localStorage.getItem('ORARevenue2015')).toFixed(2); 
+		document.getElementById("ORAGrossMargin2015").innerHTML = ORAGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->   
+		
+		
+		
+		
 			
 		 
 		 <form id = "ORAProfitInputForm2015">	  
@@ -598,13 +739,43 @@ document.getElementById("ORAEmployeePPE2015").innerHTML = ORAEmployeePPE2015;
 <div class="column5of9">
 <h3>IBM</h3>
 		
-		<form id = "IBMRevenueInputForm">	  
+		<form id = "IBMRevenueInputForm2015">	  
 			<!--label for="SAGRevenueInput">Rev</label--> 
 			<div> 
-			<input type="text" id="IBMRevenueInput" oninput="myFunctionIBMRevenue()" value="">    
+			<input type="text" id="IBMRevenueInput2015" oninput="myFunctionIBMRevenue2015()" value="">    
 			</div> 
 		</form> 
-		 
+		
+		
+		
+		<!-- COST OF SALES --> 
+		<form id = "IBMCostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="IBMCostSalesInput2015" oninput="myFunctionIBMCostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initIBMCostSalesInput2015()	{ 
+			document.getElementById("IBMCostSalesInputForm2015").IBMCostSalesInput2015.value = localStorage.getItem('IBMCostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initIBMCostSalesInput2015();	
+			
+		function myFunctionIBMCostSales2015() { 
+			var IBMCostSales2015 = document.getElementById("IBMCostSalesInput2015").value;
+			localStorage.IBMCostSales2015 = IBMCostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="IBMGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var IBMGrossMargin2015 = ((localStorage.getItem('IBMRevenue2015')-localStorage.getItem('IBMCostSales2015')) / localStorage.getItem('IBMRevenue2015')).toFixed(2); 
+		document.getElementById("IBMGrossMargin2015").innerHTML = IBMGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->   	
+		
 		 
 		 <form id = "IBMProfitInputForm">	  
 			 
@@ -647,7 +818,7 @@ document.getElementById("ORAEmployeePPE2015").innerHTML = ORAEmployeePPE2015;
 function initIBMInput()	{ 
 
 // IBM  
-	document.getElementById("IBMRevenueInputForm").IBMRevenueInput.value = localStorage.getItem('IBMRevenue');
+	document.getElementById("IBMRevenueInputForm2015").IBMRevenueInput2015.value = localStorage.getItem('IBMRevenue2015');
 	document.getElementById("IBMProfitInputForm").IBMProfitInput.value = localStorage.getItem('IBMProfit'); 
 	document.getElementById("IBMEmployeesInputForm").IBMEmployeesInput.value = localStorage.getItem('IBMEmployees');	
 	document.getElementById("IBMPPEInputForm").IBMPPEInput.value = localStorage.getItem('IBMPPE');
@@ -658,10 +829,10 @@ function initIBMInput()	{
 initIBMInput();
 
 
-function myFunctionIBMRevenue() { 
-    var IBMRevenue = document.getElementById("IBMRevenueInput").value;
+function myFunctionIBMRevenue2015() { 
+    var IBMRevenue2015 = document.getElementById("IBMRevenueInput2015").value;
     //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
-    localStorage.IBMRevenue = IBMRevenue; 
+    localStorage.IBMRevenue2015 = IBMRevenue2015; 
     //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
 	 
 }    
@@ -694,7 +865,7 @@ document.getElementById("IBMProfitMargin").innerHTML = IBMprofitmargin;
 var IBMEmployeeEBIT = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
 document.getElementById("IBMEmployeeEBIT").innerHTML = IBMEmployeeEBIT;  
 
-var IBMEmployeeRevenue = (localStorage.getItem('IBMRevenue')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
+var IBMEmployeeRevenue = (localStorage.getItem('IBMRevenue2015')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
 document.getElementById("IBMEmployeeRevenue").innerHTML = IBMEmployeeRevenue; 
 
 var IBMEmployeePPE = (localStorage.getItem('IBMPPE')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
@@ -711,6 +882,41 @@ document.getElementById("IBMEmployeePPE").innerHTML = IBMEmployeePPE;
 			<input type="text" id="MSRevenueInput2015" oninput="myFunctionMSRevenue2015()" value="">    
 			</div> 
 		</form> 
+		
+		
+			<!-- COST OF SALES --> 
+		<form id = "MSCostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="MSCostSalesInput2015" oninput="myFunctionMSCostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initMSCostSalesInput2015()	{ 
+			document.getElementById("MSCostSalesInputForm2015").MSCostSalesInput2015.value = localStorage.getItem('MSCostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initMSCostSalesInput2015();	
+			
+		function myFunctionMSCostSales2015() { 
+			var MSCostSales2015 = document.getElementById("MSCostSalesInput2015").value;
+			localStorage.MSCostSales2015 = MSCostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="MSGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var MSGrossMargin2015 = ((localStorage.getItem('MSRevenue2015')-localStorage.getItem('MSCostSales2015')) / localStorage.getItem('MSRevenue2015')).toFixed(2); 
+		document.getElementById("MSGrossMargin2015").innerHTML = MSGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->   	
+		
+		
+		
+		
+		
+		
 			
 		 
 		 <form id = "MSProfitInputForm2015">	  
@@ -802,7 +1008,7 @@ document.getElementById("MSEmployeeRevenue2015").innerHTML = MSEmployeeRevenue20
 var MSEmployeePPE2015 = (localStorage.getItem('MSPPE2015')/localStorage.getItem('MSEmployees2015')).toFixed(3)*1000000; 
 document.getElementById("MSEmployeePPE2015").innerHTML = MSEmployeePPE2015; 		
 			
-</script> 
+</script> 	
 			 
 			 
 			 
@@ -816,6 +1022,39 @@ document.getElementById("MSEmployeePPE2015").innerHTML = MSEmployeePPE2015;
 			<input type="text" id="AAPLRevenueInput2015" oninput="myFunctionAAPLRevenue2015()" value="">    
 			</div> 
 		</form> 
+		
+		
+		<!-- COST OF SALES --> 
+		<form id = "AAPLCostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="AAPLCostSalesInput2015" oninput="myFunctionAAPLCostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initAAPLCostSalesInput2015()	{ 
+			document.getElementById("AAPLCostSalesInputForm2015").AAPLCostSalesInput2015.value = localStorage.getItem('AAPLCostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initAAPLCostSalesInput2015();	
+			
+		function myFunctionAAPLCostSales2015() { 
+			var AAPLCostSales2015 = document.getElementById("AAPLCostSalesInput2015").value;
+			localStorage.AAPLCostSales2015 = AAPLCostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="AAPLGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var AAPLGrossMargin2015 = ((localStorage.getItem('AAPLRevenue2015')-localStorage.getItem('AAPLCostSales2015')) / localStorage.getItem('AAPLRevenue2015')).toFixed(2); 
+		document.getElementById("AAPLGrossMargin2015").innerHTML = AAPLGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->  
+		
+		
+		
+		
 			
 		 
 		 <form id = "AAPLProfitInputForm2015">	  
@@ -919,6 +1158,38 @@ document.getElementById("AAPLEmployeePPE2015").innerHTML = AAPLEmployeePPE2015;
 			</div> 
 		</form> 
 			
+			
+		<!-- COST OF SALES --> 
+		<form id = "GOOGCostSalesInputForm2015">	  
+			<div> 
+			<input type="text" id="GOOGCostSalesInput2015" oninput="myFunctionGOOGCostSales2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initGOOGCostSalesInput2015()	{ 
+			document.getElementById("GOOGCostSalesInputForm2015").GOOGCostSalesInput2015.value = localStorage.getItem('GOOGCostSales2015');
+		}
+
+		// CALL FUNCTION 
+		initGOOGCostSalesInput2015();	
+			
+		function myFunctionGOOGCostSales2015() { 
+			var GOOGCostSales2015 = document.getElementById("GOOGCostSalesInput2015").value;
+			localStorage.GOOGCostSales2015 = GOOGCostSales2015; 
+		} 				
+		</script><!-- END COST OF SALES --> 
+			
+		<!-- GROSS MARGIN --> 	
+		<div class= "calculated" id="GOOGGrossMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var GOOGGrossMargin2015 = ((localStorage.getItem('GOOGRevenue2015')-localStorage.getItem('GOOGCostSales2015')) / localStorage.getItem('GOOGRevenue2015')).toFixed(2); 
+		document.getElementById("GOOGGrossMargin2015").innerHTML = GOOGGrossMargin2015; 			
+		</script><!-- END GROSS MARGIN -->  	
+			
+			
+			
+			
 		 
 		 <form id = "GOOGProfitInputForm2015">	  
 			 
@@ -938,7 +1209,7 @@ document.getElementById("AAPLEmployeePPE2015").innerHTML = AAPLEmployeePPE2015;
 		 
 		 <p> 
 		<div class= "calculated" id="GOOGEmployeeEBIT2015"></div>
-		 </p> 
+		 </p> 	
 		
 		 <p> 
 		<div class= "calculated" id="GOOGEmployeeRevenue2015"></div>		
@@ -1011,183 +1282,20 @@ document.getElementById("GOOGEmployeePPE2015").innerHTML = GOOGEmployeePPE2015;
 			
 </script> 	
 		 
+
 		 
-		
-		
-
-		
-
-
-<script  type="text/javascript"> 
-    
- // SAG old 
- /***
-
-function myFunction1() { 
-    var SAGRevenue = document.getElementById("SAGRevenueInput").value;
-    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
-    localStorage.SAGRevenue = SAGRevenue; 
-    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
-	 
-}    
-    
-function myFunction2() { 
-    var SAGProfit = document.getElementById("SAGProfitInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.SAGProfit = SAGProfit; 
-    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
-	 
-}     
- 
-
-function myFunctionSAGEmployees() { 
-	var SAGEmployees = document.getElementById("SAGEmployeesInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.SAGEmployees = SAGEmployees; 
-} 
- 
- 
-function myFunctionSAGPPE() { 
-	var SAGPPE = document.getElementById("SAGPPEInput").value;
-    localStorage.SAGPPE = SAGPPE; 
-} 
- 
-***/ 	 
- 
-// SAP  
-/*** 
- 
-function myFunction3() { 
-    var SAPRevenue = document.getElementById("SAPRevenueInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.SAPRevenue = SAPRevenue; 
-    //document.getElementById("locallystoredSAPRev").innerHTML = "locally stored SAP Revenue: " + localStorage.getItem('SAPRevenue'); // WHY NOT ? 
-	 
-}  
+<footer> 		
+<h4>Footer</h4> 	 
+<article> 
+<p>Article 1</p> 
+<p>IDEA: drill downs via a href</p> 
+<p>IDEA: navbar as SPA</p> 
+<p>IDEA: Salesforce.com as a Cloud and Web UI company?</p> 
 
 
-function myFunction4() { 
-    var SAPEBIT = document.getElementById("SAPEBITInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.SAPEBIT = SAPEBIT; 
-    //document.getElementById("locallystoredSAPEBIT").innerHTML = "locally stored SAP EBIT: " + localStorage.getItem('SAPEBIT'); // WHY NOT ? 
-	 
-}  
-
-
-function myFunctionSAPEmployees() { 
-	var SAPEmployees = document.getElementById("SAPEmployeesInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.SAPEmployees = SAPEmployees; 
-}
-
-
-
-function myFunctionSAPPPE() { 
-	var SAPPPE = document.getElementById("SAPPPEInput").value;
-    localStorage.SAPPPE = SAPPPE; 
-}	
-
-***/ 
-
-/*** pasted in IBM DIV 
-
-// IBM
-
-
-function myFunctionIBMRevenue() { 
-    var IBMRevenue = document.getElementById("IBMRevenueInput").value;
-    //document.getElementById("RevenueOutput").innerHTML = "You entered: " + SAGRevenue;
-    localStorage.IBMRevenue = IBMRevenue; 
-    //document.getElementById("locallystoredy").innerHTML = "locally stored SAGRevenue: " + localStorage.getItem('SAGRevenue'); // WHY NOT ? 
-	 
-}    
-    
-function myFunctionIBMProfit() { 
-    var IBMProfit = document.getElementById("IBMProfitInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.IBMProfit = IBMProfit; 
-    //document.getElementById("locallystoredz").innerHTML = "locally stored z: " + localStorage.getItem('z'); // WHY NOT ? 
-	 
-}     
- 
-
-function myFunctionIBMEmployees() { 
-	var IBMEmployees = document.getElementById("IBMEmployeesInput").value;
-    //document.getElementById("ProfitOutput").innerHTML = "You entered: " + z;
-    localStorage.IBMEmployees = IBMEmployees; 
-} 
- 
- 
-function myFunctionIBMPPE() { 
-	var IBMPPE = document.getElementById("IBMPPEInput").value;
-    localStorage.IBMPPE = IBMPPE; 
-} 
-
-
-***/ 
-
-
-
-//localStorage.setItem('SAP.Revenue', JSON.stringify(saprevenue));
- 
-// Retrieve the object from storage
-//var sapstoredrevenue = JSON.parse(localStorage.getItem('SAP.Revenue'));
-   
-// CALCULATED RATIOS    
-// SEQUENCE MATTERS FOR CODE 		
-// SAG
-		
-/***		
-var SAGprofitmargin = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGRevenue')).toFixed(3); 
-document.getElementById("SAGProfitMargin").innerHTML = SAGprofitmargin; 
-
-var SAGEmployeeEBIT = (localStorage.getItem('SAGProfit')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
-document.getElementById("SAGEmployeeEBIT").innerHTML = SAGEmployeeEBIT;  
-
-var SAGEmployeeRevenue = (localStorage.getItem('SAGRevenue')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
-document.getElementById("SAGEmployeeRevenue").innerHTML = SAGEmployeeRevenue; 
-
-var SAGEmployeePPE = (localStorage.getItem('SAGPPE')/localStorage.getItem('SAGEmployees')).toFixed(3)*1000000; 
-document.getElementById("SAGEmployeePPE").innerHTML = SAGEmployeePPE; 
-***/ 
-
-	
-/***	
-var SAPprofitmargin = (localStorage.getItem('SAPEBIT')/localStorage.getItem('SAPRevenue')).toFixed(3); 
-document.getElementById("SAPprofitmargin").innerHTML = SAPprofitmargin; 
-
-var SAPEmployeeEBIT = (localStorage.getItem('SAPEBIT')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
-document.getElementById("SAPEmployeeEBIT").innerHTML = SAPEmployeeEBIT;  
-
- 
-var SAPEmployeeRevenue = (localStorage.getItem('SAPRevenue')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
-document.getElementById("SAPEmployeeRevenue").innerHTML = SAPEmployeeRevenue;  
-
- 
-
-var SAPEmployeePPE = (localStorage.getItem('SAPPPE')/localStorage.getItem('SAPEmployees')).toFixed(3)*1000000; 
-document.getElementById("SAPEmployeePPE").innerHTML = SAPEmployeePPE;  
-***/ 
-
-
-/*** pasted in IBM DIV 
-var IBMprofitmargin = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMRevenue')).toFixed(3); 
-document.getElementById("IBMProfitMargin").innerHTML = IBMprofitmargin; 
-
-var IBMEmployeeEBIT = (localStorage.getItem('IBMProfit')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
-document.getElementById("IBMEmployeeEBIT").innerHTML = IBMEmployeeEBIT;  
-
-var IBMEmployeeRevenue = (localStorage.getItem('IBMRevenue')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
-document.getElementById("IBMEmployeeRevenue").innerHTML = IBMEmployeeRevenue; 
-
-var IBMEmployeePPE = (localStorage.getItem('IBMPPE')/localStorage.getItem('IBMEmployees')).toFixed(3)*1000000; 
-document.getElementById("IBMEmployeePPE").innerHTML = IBMEmployeePPE; 
-***/ 
-
-
-
-</script> 		
+</article> 		 
+</footer> 		
+ 	
 
 
 
