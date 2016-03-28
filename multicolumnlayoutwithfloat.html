@@ -123,6 +123,8 @@ function initInput()
 			<p>Revenue (mio.)</p>
 			<p>Cost of Sales</p>
 			<p>Gross Profit Margin</p>
+			<p>SG&A</p>
+			<p>SG&A to Sales</p>
 			<p>EBIT (mio):</p>
 			<p>Operating Margin</p> 	
 			<p>Employees</p> 
@@ -183,6 +185,42 @@ function initInput()
 		var SAGGrossMargin2014 = ((localStorage.getItem('SAGRevenue2014')-localStorage.getItem('SAGCostSales2014')) / localStorage.getItem('SAGRevenue2014')).toFixed(2); 
 		document.getElementById("SAGGrossMargin2014").innerHTML = SAGGrossMargin2014; 			
 		</script><!-- END GROSS MARGIN -->   				
+		 
+		 
+		 
+		<!-- SG&A --> 
+		<form id = "SAGSGAInputForm2014">	  
+			<div> 
+			<input type="text" id="SAGSGAInput2014" oninput="myFunctionSAGSGA2014()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 		
+		function initSAGSGAInput2014()	{ 
+			document.getElementById("SAGSGAInputForm2014").SAGSGAInput2014.value = localStorage.getItem('SAGSGA2014');
+		}
+
+		// CALL FUNCTION 
+		initSAGSGAInput2014();	
+			
+		function myFunctionSAGSGA2014() { 
+			var SAGSGA2014 = document.getElementById("SAGSGAInput2014").value;
+			localStorage.SAGSGA2014 = SAGSGA2014; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A  TO SALES RATIO --> 	
+		<div class= "calculated" id="SAGSGAMargin2014"></div></p>  	
+		<script  type="text/javascript"> 	
+		var SAGSGAMargin2014 = ((localStorage.getItem('SAGSGA2014')) / localStorage.getItem('SAGRevenue2014')).toFixed(2); 
+		document.getElementById("SAGSGAMargin2014").innerHTML = SAGSGAMargin2014; 			
+		</script><!-- END SG&A  TO SALES RATIO -->   		 
+		 
+		 
+		 
+		 
+		 
+		 
 		 
 		 
 		 <form id = "SAGProfitInputForm2014">	  
@@ -323,6 +361,43 @@ document.getElementById("SAGEmployeePPE2014").innerHTML = SAGEmployeePPE2014;
 		var SAGGrossMargin2015 = ((localStorage.getItem('SAGRevenue2015')-localStorage.getItem('SAGCostSales2015')) / localStorage.getItem('SAGRevenue2015')).toFixed(2); 
 		document.getElementById("SAGGrossMargin2015").innerHTML = SAGGrossMargin2015; 			
 		</script><!-- END GROSS MARGIN -->   				
+		
+		
+		
+		<!-- SG&A --> 
+		<form id = "SAGSGAInputForm2015">	  
+			<div> 
+			<input type="text" id="SAGSGAInput2015" oninput="myFunctionSAGSGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initSAGSGAInput2015()	{ 
+			document.getElementById("SAGSGAInputForm2015").SAGSGAInput2015.value = localStorage.getItem('SAGSGA2015');
+		}
+
+		// CALL FUNCTION 
+		initSAGSGAInput2015();	
+			
+		function myFunctionSAGSGA2015() { 
+			var SAGSGA2015 = document.getElementById("SAGSGAInput2015").value;
+			localStorage.SAGSGA2015 = SAGSGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="SAGSGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var SAGSGAMargin2015 = ((localStorage.getItem('SAGSGA2015')) / localStorage.getItem('SAGRevenue2015')).toFixed(2); 
+		document.getElementById("SAGSGAMargin2015").innerHTML = SAGSGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO -->   	
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -491,7 +566,39 @@ document.getElementById("SAGEmployeePPE2015").innerHTML = SAGEmployeePPE2015;
 		</script><!-- END GROSS MARGIN -->   		
 			
 			
+		
+
+		<!-- SG&A --> 
+		<form id = "SAPSGAInputForm2015">	  
+			<div> 
+			<input type="text" id="SAPSGAInput2015" oninput="myFunctionSAPSGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initSAPSGAInput2015()	{ 
+			document.getElementById("SAPSGAInputForm2015").SAPSGAInput2015.value = localStorage.getItem('SAPSGA2015');
+		}
+
+		// CALL FUNCTION 
+		initSAPSGAInput2015();	
 			
+		function myFunctionSAPSGA2015() { 
+			var SAPSGA2015 = document.getElementById("SAPSGAInput2015").value;
+			localStorage.SAPSGA2015 = SAPSGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="SAPSGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var SAPSGAMargin2015 = ((localStorage.getItem('SAPSGA2015')) / localStorage.getItem('SAPRevenue2015')).toFixed(2); 
+		document.getElementById("SAPSGAMargin2015").innerHTML = SAPSGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO -->   
+
+
+
+		
 			
 		 
 		 <form id = "SAPProfitInputForm2015">	  
@@ -629,6 +736,39 @@ document.getElementById("SAPEmployeePPE2015").innerHTML = SAPEmployeePPE2015;
 		var ORAGrossMargin2015 = ((localStorage.getItem('ORARevenue2015')-localStorage.getItem('ORACostSales2015')) / localStorage.getItem('ORARevenue2015')).toFixed(2); 
 		document.getElementById("ORAGrossMargin2015").innerHTML = ORAGrossMargin2015; 			
 		</script><!-- END GROSS MARGIN -->   
+		
+		
+		
+		
+		<!-- SG&A --> 
+		<form id = "ORASGAInputForm2015">	  
+			<div> 
+			<input type="text" id="ORASGAInput2015" oninput="myFunctionORASGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initORASGAInput2015()	{ 
+			document.getElementById("ORASGAInputForm2015").ORASGAInput2015.value = localStorage.getItem('ORASGA2015');
+		}
+
+		// CALL FUNCTION 
+		initORASGAInput2015();	
+			
+		function myFunctionORASGA2015() { 
+			var ORASGA2015 = document.getElementById("ORASGAInput2015").value;
+			localStorage.ORASGA2015 = ORASGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="ORASGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var ORASGAMargin2015 = ((localStorage.getItem('ORASGA2015')) / localStorage.getItem('ORARevenue2015')).toFixed(2); 
+		document.getElementById("ORASGAMargin2015").innerHTML = ORASGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO -->  
+		
+		
 		
 		
 		
@@ -777,6 +917,46 @@ document.getElementById("ORAEmployeePPE2015").innerHTML = ORAEmployeePPE2015;
 		</script><!-- END GROSS MARGIN -->   	
 		
 		 
+		 
+		 
+		 <!-- SG&A --> 
+		<form id = "IBMSGAInputForm2015">	  
+			<div> 
+			<input type="text" id="IBMSGAInput2015" oninput="myFunctionIBMSGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initIBMSGAInput2015()	{ 
+			document.getElementById("IBMSGAInputForm2015").IBMSGAInput2015.value = localStorage.getItem('IBMSGA2015');
+		}
+
+		// CALL FUNCTION 
+		initIBMSGAInput2015();	
+			
+		function myFunctionIBMSGA2015() { 
+			var IBMSGA2015 = document.getElementById("IBMSGAInput2015").value;
+			localStorage.IBMSGA2015 = IBMSGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="IBMSGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var IBMSGAMargin2015 = ((localStorage.getItem('IBMSGA2015')) / localStorage.getItem('IBMRevenue2015')).toFixed(2); 
+		document.getElementById("IBMSGAMargin2015").innerHTML = IBMSGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO -->  
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 		 <form id = "IBMProfitInputForm">	  
 			 
 			<div>
@@ -911,6 +1091,37 @@ document.getElementById("IBMEmployeePPE").innerHTML = IBMEmployeePPE;
 		var MSGrossMargin2015 = ((localStorage.getItem('MSRevenue2015')-localStorage.getItem('MSCostSales2015')) / localStorage.getItem('MSRevenue2015')).toFixed(2); 
 		document.getElementById("MSGrossMargin2015").innerHTML = MSGrossMargin2015; 			
 		</script><!-- END GROSS MARGIN -->   	
+		
+		
+		
+		
+		 <!-- SG&A --> 
+		<form id = "MSSGAInputForm2015">	  
+			<div> 
+			<input type="text" id="MSSGAInput2015" oninput="myFunctionMSSGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initMSSGAInput2015()	{ 
+			document.getElementById("MSSGAInputForm2015").MSSGAInput2015.value = localStorage.getItem('MSSGA2015');
+		}
+
+		// CALL FUNCTION 
+		initMSSGAInput2015();	
+			
+		function myFunctionMSSGA2015() { 
+			var MSSGA2015 = document.getElementById("MSSGAInput2015").value;
+			localStorage.MSSGA2015 = MSSGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="MSSGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var MSSGAMargin2015 = ((localStorage.getItem('MSSGA2015')) / localStorage.getItem('MSRevenue2015')).toFixed(2); 
+		document.getElementById("MSSGAMargin2015").innerHTML = MSSGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO --> 
 		
 		
 		
@@ -1054,6 +1265,36 @@ document.getElementById("MSEmployeePPE2015").innerHTML = MSEmployeePPE2015;
 		
 		
 		
+			 <!-- SG&A --> 
+		<form id = "AAPLSGAInputForm2015">	  
+			<div> 
+			<input type="text" id="AAPLSGAInput2015" oninput="myFunctionAAPLSGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initAAPLSGAInput2015()	{ 
+			document.getElementById("AAPLSGAInputForm2015").AAPLSGAInput2015.value = localStorage.getItem('AAPLSGA2015');
+		}
+
+		// CALL FUNCTION 
+		initAAPLSGAInput2015();	
+			
+		function myFunctionAAPLSGA2015() { 
+			var AAPLSGA2015 = document.getElementById("AAPLSGAInput2015").value;
+			localStorage.AAPLSGA2015 = AAPLSGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="AAPLSGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var AAPLSGAMargin2015 = ((localStorage.getItem('AAPLSGA2015')) / localStorage.getItem('AAPLRevenue2015')).toFixed(2); 
+		document.getElementById("AAPLSGAMargin2015").innerHTML = AAPLSGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO --> 
+		
+		
+		
 		
 			
 		 
@@ -1188,7 +1429,40 @@ document.getElementById("AAPLEmployeePPE2015").innerHTML = AAPLEmployeePPE2015;
 		</script><!-- END GROSS MARGIN -->  	
 			
 			
+		
+			 <!-- SG&A --> 
+		<form id = "GOOGSGAInputForm2015">	  
+			<div> 
+			<input type="text" id="GOOGSGAInput2015" oninput="myFunctionGOOGSGA2015()" value="">    
+			</div> 
+		</form> 
+		<script  type="text/javascript"> 	 	
+		// DEFINE FUNCTION 	
+		function initGOOGSGAInput2015()	{ 
+			document.getElementById("GOOGSGAInputForm2015").GOOGSGAInput2015.value = localStorage.getItem('GOOGSGA2015');
+		}
+
+		// CALL FUNCTION 
+		initGOOGSGAInput2015();	
 			
+		function myFunctionGOOGSGA2015() { 
+			var GOOGSGA2015 = document.getElementById("GOOGSGAInput2015").value;
+			localStorage.GOOGSGA2015 = GOOGSGA2015; 
+		} 				
+		</script><!-- END SG&A  --> 
+			
+		<!-- SG&A TO SALES RATIO --> 	
+		<div class= "calculated" id="GOOGSGAMargin2015"></div></p>  	
+		<script  type="text/javascript"> 	
+		var GOOGSGAMargin2015 = ((localStorage.getItem('GOOGSGA2015')) / localStorage.getItem('GOOGRevenue2015')).toFixed(2); 
+		document.getElementById("GOOGSGAMargin2015").innerHTML = GOOGSGAMargin2015; 			
+		</script><!-- END SG&A  TO SALES RATIO --> 	
+
+
+
+
+
+		
 			
 		 
 		 <form id = "GOOGProfitInputForm2015">	  
@@ -1291,6 +1565,7 @@ document.getElementById("GOOGEmployeePPE2015").innerHTML = GOOGEmployeePPE2015;
 <p>IDEA: drill downs via a href</p> 
 <p>IDEA: navbar as SPA</p> 
 <p>IDEA: Salesforce.com as a Cloud and Web UI company?</p> 
+<p>FOOTNOTE: SG&A in Software Industry: R&D, Sales & Marketing, General & Admin</p> 
 
 
 </article> 		 
